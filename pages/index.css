@@ -6,6 +6,12 @@
 @import url(../logo/logo.css);
 
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__about/profile__about.css);
+@import url(../blocks/profile/__edit/profile__edit.css);
+@import url(../blocks/profile/__add/profile__add.css);
 /*блок фото*/
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
@@ -16,4 +22,4 @@
 /*Футер*/
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
-
+@import url(../blocks/form/form.css);

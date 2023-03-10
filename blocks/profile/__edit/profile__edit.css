@@ -1,0 +1,30 @@
+.profile__edit {
+    position: absolute;
+    top: 37px;
+    left: 100%;
+    padding: 0;
+    margin: 0;
+    background: #000;
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #fff;
+    background-image: url(../../../images/Vector-karandash.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: .6s;
+}
+
+.profile__edit:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 540px) {
+    .profile__edit {
+        width: 18px;
+        height: 18px;
+        margin-left: 10px;
+        text-align: center;
+        }
+}

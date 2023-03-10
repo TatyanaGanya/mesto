@@ -1,7 +1,7 @@
 .card__like {
     border: 0;
     background: #fff;
-    background-image: url(../../images/Vector.png);
+    background-image: url(../../../images/Vector.png);
     width: 22px;
     height: 19px;
     transition: .8s;
@@ -9,6 +9,7 @@
     position: absolute;
     bottom: 30px;
     right: 20px;
+    cursor: pointer;
 }
 
 .card__like:hover {
@@ -16,5 +17,5 @@
 }
 
 .card__like:active {
-    background-image: url(../../images/Union.png);   
+    background-image: url(../../../images/Union.png);   
 }
