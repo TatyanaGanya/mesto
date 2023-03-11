@@ -34,8 +34,8 @@ popupElement.addEventListener("click",closePopupByClickOnOverlay);
 // Находим форму в DOM
 let formElement = popupElement.querySelector(".popup__content");
 
-let nameInput = popupElement.querySelector('.popup__type_name');
-let jobInput = popupElement.querySelector('.popup__type_job');
+let nameInput = popupElement.querySelector('.popup__input_name');
+let jobInput = popupElement.querySelector('.popup__input_job');
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
