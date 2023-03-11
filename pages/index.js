@@ -16,29 +16,43 @@ const closePopup = function () {
 // open and close
 
 popupOpenButtomElement.addEventListener('click', openPopup);
+
 popupClouseButtomElement.addEventListener("click", closePopup)
+
+// close event
+const closePopupByClickOnOverlay = function (event) 
+{
+    if (event.target !== event.currentTarget) {
+        return;
+    }
+    closePopup();
+};
+
+popupElement.addEventListener("click",closePopupByClickOnOverlay);
 
 
 // Находим форму в DOM
-let formElement = // Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-let nameInput = // Воспользуйтесь инструментом .querySelector()
-let jobInput = // Воспользуйтесь инструментом .querySelector()
+let formElement = popupElement.querySelector(".popup__content");
 
-// Обработчик «отправки» формы, хотя пока
-// она никуда отправляться не будет
+let nameInput = popupElement.querySelector('.popup__type_name');
+let jobInput = popupElement.querySelector('.popup__type_job');
+
 function handleFormSubmit (evt) {
-    evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-                                                // Так мы можем определить свою логику отправки.
-                                                // О том, как это делать, расскажем позже.
+    evt.preventDefault();
+    
+    nameInput.value;
+    jobInput.value;
+    document.querySelector('.profile__name').textContent = nameInput.value;
 
-    // Получите значение полей jobInput и nameInput из свойства value
+document.querySelector('.profile__about').textContent = jobInput.value;
 
-    // Выберите элементы, куда должны быть вставлены значения полей
+handleFormSubmit ();
 
-    // Вставьте новые значения с помощью textContent
-}
-
+};
 // Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
-formElement.addEventListener('submit', handleFormSubmit);
+
+formElement.addEventListener('submit', handleFormSubmit); 
+
+const popupSaveButtomElement = popupElement.querySelector(".popup__save");
+
+popupSaveButtomElement.addEventListener("click", closePopup);
