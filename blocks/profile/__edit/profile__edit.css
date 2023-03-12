@@ -1,10 +1,7 @@
 .profile__edit {
-    position: absolute;
-    top: 37px;
-    left: 100%;
     padding: 0;
-    margin: 0;
-    background: #000;
+    margin: auto 0 auto;
+    background: none;
     color: #fff;
     width: 24px;
     height: 24px;
