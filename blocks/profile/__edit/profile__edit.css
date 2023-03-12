@@ -1,6 +1,6 @@
 .profile__edit {
     padding: 0;
-    margin: auto 0 auto;
+    margin: 37px 0 0;
     background: none;
     color: #fff;
     width: 24px;
@@ -21,7 +21,7 @@
     .profile__edit {
         width: 18px;
         height: 18px;
-        top: 34px;
-       
+        margin: 33px 0 0;
+
         }
 }
