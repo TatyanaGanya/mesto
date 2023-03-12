@@ -1,15 +1,17 @@
 .card__like {
     border: 0;
-    background: #fff;
-    background-image: url(../../../images/Vector.png);
+    background: none;
+    background-image: url(../../../images/like.png);
+    background-repeat: no-repeat;
     width: 22px;
     height: 19px;
     transition: .8s;
     color: #000;
-    position: absolute;
-    bottom: 30px;
-    right: 20px;
     cursor: pointer;
+    padding: 0;
+    margin: auto;
+    margin-right: 20px;
+    margin-bottom: 30px;
 }
 
 .card__like:hover {

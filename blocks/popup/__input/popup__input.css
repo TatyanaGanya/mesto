@@ -21,12 +21,7 @@
     .popup__input:last-of-type  {
         margin-bottom: 45px;
     }
-}
-
-@media screen and (max-width: 540px) {
     .popup__input {
-        font-size: 14px;
-        line-height: 17px;
         width: 238px;
     }
 }

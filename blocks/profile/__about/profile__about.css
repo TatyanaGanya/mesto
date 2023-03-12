@@ -5,13 +5,17 @@
     margin: 0;
     padding: 0;
     color: #fff;
+    max-width: 336px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 540px) {
     .profile__about {
         font-size: 14px;
         line-height: 17px;
-        margin-top: 10px;
+        margin-top: 9px;
         text-align: center;
     }
 }

@@ -1,6 +1,5 @@
 .card__text {
     color: #000;
-    margin: 25px 20px 30px;
     font-weight: 900;
     font-size: 24px;
     line-height: 29px;
@@ -8,4 +7,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 190px;
+    padding: 0;
+    padding-left: 21px;
+    
 }
