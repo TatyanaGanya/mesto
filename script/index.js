@@ -16,43 +16,32 @@ const closePopup = function () {
 // open and close
 
 popupOpenButtomElement.addEventListener('click', openPopup);
-
-popupClouseButtomElement.addEventListener("click", closePopup)
-
-// close event
-const closePopupByClickOnOverlay = function (event) 
-{
-    if (event.target !== event.currentTarget) {
-        return;
-    }
-    closePopup();
-};
-
-popupElement.addEventListener("click",closePopupByClickOnOverlay);
+popupClouseButtomElement.addEventListener('click', closePopup);
 
 
 // Находим форму в DOM
-let formElement = popupElement.querySelector(".popup__content");
+let formElement = popupElement.querySelector('.popup__content');
 
 let nameInput = popupElement.querySelector('.popup__input_type_name');
 let jobInput = popupElement.querySelector('.popup__input_type_job');
 
+let profileName = document.querySelector('.profile__name')
+let profileAbout = document.querySelector('.profile__about')
+
+
+nameInput.value = 'Жак-Ив Кусто'
+jobInput.value = 'Исследователь океана'
+
 function handleFormSubmit (evt) {
+
     evt.preventDefault();
 
-    nameInput.value;
-    jobInput.value;
-
-    document.querySelector('.profile__name').textContent = nameInput.value;
-    document.querySelector('.profile__about').textContent = jobInput.value;
-
-handleFormSubmit ();
-
+    profileName.textContent = nameInput.value;
+    profileAbout.textContent = jobInput.value;
+    closePopup ();
+    
 };
+
 // Прикрепляем обработчик к форме:
 
 formElement.addEventListener('submit', handleFormSubmit); 
-
-const popupSaveButtomElement = popupElement.querySelector(".popup__save");
-
-popupSaveButtomElement.addEventListener("click", closePopup);

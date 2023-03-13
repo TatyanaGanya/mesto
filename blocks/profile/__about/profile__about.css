@@ -3,17 +3,17 @@
     font-size: 18px;
     line-height: 22px;
     margin: 0;
-    padding: 0;
+    padding: 6px 0 0;
     color: #fff;
-    max-width: 336px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: start;
+    max-width: 336px;
 }
 
 @media screen and (max-width: 540px) {
     .profile__about {
+        max-width: 282px;
         font-size: 14px;
         line-height: 17px;
         text-align: center;

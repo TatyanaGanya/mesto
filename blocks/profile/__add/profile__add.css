@@ -6,9 +6,6 @@
     border-radius: 2px;
     color: #fff;
     line-height: 22px;
-    padding: 0;
-    margin: auto;
-    margin-right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,11 +15,13 @@
     background-size: 24px;
     cursor: pointer;
     transition: .6s;
+    padding: 0;
+    margin: auto;
+    margin-right: 0;
 }
 
 .profile__add:hover {
     opacity: .6;
-    display: ;
 }
 
 @media screen and (max-width: 920px) {
@@ -34,8 +33,7 @@
 @media screen and (max-width: 740px) {
     .profile__add {
         width: 282px;
-        margin: 0;
-        margin-top: 32.5px;
+        margin: 32.5px 0 0;
         background-size: 16px;
     }
 }

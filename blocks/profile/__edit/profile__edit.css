@@ -1,6 +1,4 @@
 .profile__edit {
-    padding: 0;
-    margin: 37px 0 0;
     background: none;
     color: #fff;
     width: 24px;
@@ -9,8 +7,11 @@
     background-image: url(../../../images/Vector-karandash.png);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 10px;
     cursor: pointer;
     transition: .6s;
+    margin-top: 5px;
+    margin-left: 18px;
 }
 
 .profile__edit:hover {
@@ -21,7 +22,8 @@
     .profile__edit {
         width: 18px;
         height: 18px;
-        margin: 33px 0 0;
-
-        }
+        background-size: 7.5px;
+        margin-left: 10px;
+        margin-top: 0;
+    }
 }

@@ -1,4 +1,4 @@
-.logo {
+.header__logo {
     width: 142px;
     color: #fff;
     padding: 0;
@@ -6,13 +6,13 @@
 }
 
 @media screen and (max-width: 920px) {
-    .logo {
+    .header__logo {
         padding-left: 27px;
     }
 }
 
 @media screen and (max-width: 320px) {
-    .logo {
+    .header__logo {
         width: 104px;
         margin: 0 0 28px;
     }
