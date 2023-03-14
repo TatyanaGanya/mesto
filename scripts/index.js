@@ -28,10 +28,6 @@ const closePopup = function () {
 popupOpenButtomElement.addEventListener('click', openPopup);
 popupClouseButtomElement.addEventListener('click', closePopup);
 
-
-
-
-
 function handleFormSubmit (evt) {
  
     evt.preventDefault();
@@ -43,3 +39,7 @@ function handleFormSubmit (evt) {
 
 // Прикрепляем обработчик к форме:
 formElement.addEventListener('submit', handleFormSubmit); 
+
+
+
+
