@@ -1,9 +1,7 @@
-
 //элементы  dom
 const popupElement = document.querySelector(".popup");
 const popupClouseButtomElement = popupElement.querySelector(".popup__close");
 const popupOpenButtomElement = document.querySelector(".profile__edit");
-
 
 // Находим форму в DOM
 let formElement = popupElement.querySelector('.popup__content');
@@ -22,6 +20,7 @@ const closePopup = function () {
     popupElement.classList.remove("popup_open");
 };
 
+
 // open and close
 popupOpenButtomElement.addEventListener('click', openPopup);
 popupClouseButtomElement.addEventListener('click', closePopup);
@@ -38,3 +37,7 @@ function handleFormSubmit (evt) {
 
 // Прикрепляем обработчик к форме:
 formElement.addEventListener('submit', handleFormSubmit); 
+
+
+
+
