@@ -5,6 +5,14 @@ const popupClouseButtomElement = popupElement.querySelector(".popup__close");
 const popupOpenButtomElement = document.querySelector(".profile__edit");
 
 
+// Находим форму в DOM
+let formElement = popupElement.querySelector('.popup__content');
+let nameInput = popupElement.querySelector('.popup__input_type_name');
+let jobInput = popupElement.querySelector('.popup__input_type_job');
+let profileName = document.querySelector('.profile__name')
+let profileAbout = document.querySelector('.profile__about')
+
+
 const openPopup = function () {
     popupElement.classList.add("popup_open");
     nameInput.value=profileName.innerText;
@@ -15,17 +23,13 @@ const closePopup = function () {
     popupElement.classList.remove("popup_open");
 };
 
+
 // open and close
 popupOpenButtomElement.addEventListener('click', openPopup);
 popupClouseButtomElement.addEventListener('click', closePopup);
 
 
-// Находим форму в DOM
-let formElement = popupElement.querySelector('.popup__content');
-let nameInput = popupElement.querySelector('.popup__input_type_name');
-let jobInput = popupElement.querySelector('.popup__input_type_job');
-let profileName = document.querySelector('.profile__name')
-let profileAbout = document.querySelector('.profile__about')
+
 
 
 function handleFormSubmit (evt) {
