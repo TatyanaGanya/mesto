@@ -29,14 +29,17 @@ let profileName = document.querySelector('.profile__name')
 let profileAbout = document.querySelector('.profile__about')
 
 
-nameInput.value = 'Жак-Ив Кусто'
-jobInput.value = 'Исследователь океана'
+
+//innerText
+nameInput.value=profileName.innerText;
+jobInput.value=profileAbout.innerText;
 
 function handleFormSubmit (evt) {
 
+
     evt.preventDefault();
 
-    profileName.textContent = nameInput.value;
+    nameInput.value = profileName.textContent = nameInput.value;
     profileAbout.textContent = jobInput.value;
     closePopup ();
     

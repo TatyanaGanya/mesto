@@ -8,6 +8,7 @@
     text-overflow: ellipsis;
     margin: 0;
     max-width: 294px;
+    min-width: 189px;
     padding: 0;
 }
 

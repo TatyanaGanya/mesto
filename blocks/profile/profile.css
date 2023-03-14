@@ -7,10 +7,6 @@
     flex-wrap: wrap;
 }
 
-.profile:nth-child(2n) {
-    break-after: always; 
-}
-
 @media screen and (max-width: 980px) {
     .profile {
         justify-content: center;
