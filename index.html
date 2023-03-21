@@ -25,62 +25,13 @@
         </section>
         <section class="foto" aria-label="фотогалерея">
             <ul class="cards">
-                <li class="card">
-                    <article class="card__item">
-                        <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png" alt="Карачаевск">
-                        <h2 class="card__text">Карачаевск</h2>
-                        <button type="button" class="card__like"></button>
-                    </article>
-                </li>
-                <li class="card">
-                    <article class="card__item">
-                        <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
-                        <h2 class="card__text">Гора Эльбрус
-                        </h2>
-                        <button type="button" class="card__like"></button>
-                    </article>
-
-                </li>
-                <li class="card">
-                    <article class="card__item">
-                        <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-                        <h2 class="card__text">Домбай
-                        </h2>
-                        <button type="button" class="card__like"></button>
-                    </article>
-                </li>
-                <li class="card">
-                    <article class="card__item">
-                        <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.png" alt="Гора Эльбрус">
-                        <h2 class="card__text">Гора Эльбрус
-                        </h2>
-                        <button type="button" class="card__like"></button>
-                    </article>
-                </li>
-                <li class="card">
-                    <article class="card__item">
-                        <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-                        <h2 class="card__text">Домбай
-                        </h2>
-                        <button type="button" class="card__like"></button>
-                    </article>
-                </li>
-                <li class="card">
-                    <article class="card__item">
-                        <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.png"
-                            alt="Карачаево-Черкессия">
-                        <h2 class="card__text">Карачаево-Черкессия
-                        </h2>
-                        <button type="button" class="card__like"></button>
-                    </article>
-                </li>
             </ul>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy;&nbsp;2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup popup__profile">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__content" name="profile_form" method="get">
@@ -93,19 +44,36 @@
             <button type="button" class="popup__close"></button>
         </div>
     </div>
-    <div class="popup">
+    
+    <div class="popup popup__galery">
         <div class="popup__container">
             <h2 class="popup__title">Новое место</h2>
-            <form class="popup__content" name="profile_form" method="get">
-                <input class="popup__input popup__input_type_name" name="profile_name" type="text" id="name"
-                    placeholder="Название">
-                <input class="popup__input popup__input_type_job" name="profile_job" type="text" id="job"
-                    placeholder="Ссылка на картинку">
-                <button class="popup__save" type="submit">Создать</button>
+            <form class="popup__content" name="profile_title" method="get">
+                <input class="popup__input popup__input_type_title" name="title" type="text" id="title"
+                placeholder="Название">
+            <input class="popup__input popup__input_type_image" name="image" type="text" id="image"
+                placeholder="Ссылка на картинку">
+                <button class="input__btn input__btn_action_add">
+                    Создать
+                  </button>
+
             </form>
             <button type="button" class="popup__close"></button>
         </div>
     </div>  
+
+   
+    <template class="item_template">
+        <li class="card">
+            <article class="card__item">
+                <img class="card__image" src=" " alt=" ">
+                <h2 class="card__text"> 
+                </h2>
+                <button type="button" class="card__like"></button>
+                <button class="card__delete"></button>
+            </article>
+        </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 
