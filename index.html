@@ -41,7 +41,7 @@
                     placeholder="Профессия">
                 <button class="popup__save" type="submit">Сохранить</button>
             </form>
-            <button type="button" class="popup__close"></button>
+            <button class="popup__close" type="button" ></button>
         </div>
     </div>
     
@@ -53,20 +53,24 @@
                 placeholder="Название">
             <input class="popup__input popup__input_type_image" name="image" type="text" id="image"
                 placeholder="Ссылка на картинку">
-                <button class="input__btn input__btn_action_add">
-                    Создать
-                  </button>
-
+                <button class=" popup__save" type="submit">Создать</button>
             </form>
             <button type="button" class="popup__close"></button>
         </div>
     </div>  
 
-   
-    <template class="item_template">
+    <div class="popup popup__zoom-image">
+        <div class="popup__view-image">
+            <img class="popup__image" src="" alt="я смогу!!!!"> 
+            <button type="button" class="popup__close"></button>
+            <h2 class="popup__description" >Енот</h2>
+        </div>
+    </div>
+    
+    <template class="template">
         <li class="card">
             <article class="card__item">
-                <img class="card__image" src=" " alt=" ">
+                <img class="card__image" id="myIpg" src=" " alt=" ">
                 <h2 class="card__text"> 
                 </h2>
                 <button type="button" class="card__like"></button>
