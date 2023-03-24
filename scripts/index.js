@@ -45,7 +45,7 @@ const initialCards = [
     },
     {
       name: 'Енот',
-      link: 'https://images.unsplash.com/photo-1655208479058-4991ca8af84a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80'
+      link: 'https://images.unsplash.com/photo-1655208479058-4991ca8af84a'
     },
     {
       name: 'Иваново',
@@ -53,7 +53,7 @@ const initialCards = [
     },
     {
       name: 'Камчатка',
-      link: 'https://images.unsplash.com/photo-1606949571055-91663aef19fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1476&q=80'
+      link: 'https://images.unsplash.com/photo-1606949571055-91663aef19fc'
     },
     {
       name: 'Холмогорский район',
@@ -61,7 +61,7 @@ const initialCards = [
     },
     {
       name: 'Байкал',
-      link: 'https://images.unsplash.com/photo-1612899028172-8e4438bf20b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
+      link: 'https://images.unsplash.com/photo-1612899028172-8e4438bf20b8'
     }
   ];
   const popupGalery = document.querySelector(".popup_galery");
