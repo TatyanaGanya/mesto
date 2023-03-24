@@ -105,7 +105,7 @@ function handleCardDelete (evt) {
   evt.target.closest('.card').remove();
 }
 
-////101 попытка! +почистить папки от ненужных картинок
+// открытие картинки в модельном окне
 const popupImage = document.querySelector('.popup_zoom-image');
 const popupClouseButtomImage = popupImage.querySelector(".popup__close");
 
@@ -142,7 +142,7 @@ function rendItem (item) {
     htmlElement.querySelector('.card__image').src = item.link;
     htmlElement.querySelector('.card__text').textContent = item.name;
     
-     // try agein 
+
 
      const openZoomPopupImage = function () {
 
@@ -155,7 +155,7 @@ function rendItem (item) {
     htmlElement.querySelector('.card__image').addEventListener('click', openZoomPopupImage);
 
 
-     ///
+///
     setEventListeners(htmlElement);
     list.append(htmlElement); 
 }
@@ -174,7 +174,7 @@ function addCard(imageValue, titleValue) {
       popupImage.querySelector('.popup__description').textContent = titleValue;
       popupImage.classList.add("popup_open");
     };
-    //open and close
+//open and close
     cardElementGalery.querySelector('.card__image').addEventListener('click', openZoomPopupImage);
 
      setEventListeners(cardElementGalery);
