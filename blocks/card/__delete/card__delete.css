@@ -13,7 +13,6 @@
     cursor: pointer;
 }
 
-.card__delete:hover
-{
+.card__delete:hover {
     opacity: .8;
 }

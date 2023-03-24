@@ -1,5 +1,5 @@
 //элементы Профиль!
-const popupProfile = document.querySelector(".popup__profile");
+const popupProfile = document.querySelector(".popup_profile");
 const popupClouseButtomProfile = popupProfile.querySelector(".popup__close");
 const popupOpenButtomProfile = document.querySelector(".profile__edit");
 let formProfile = popupProfile.querySelector('.popup__content');
@@ -64,7 +64,7 @@ const initialCards = [
       link: 'https://images.unsplash.com/photo-1612899028172-8e4438bf20b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
     }
   ];
-  const popupGalery = document.querySelector(".popup__galery");
+  const popupGalery = document.querySelector(".popup_galery");
   const popupClouseButtomGalery = popupGalery.querySelector(".popup__close");
   const popupOpenButtomGalery = document.querySelector(".profile__add");
   
@@ -106,7 +106,7 @@ function handleCardDelete (evt) {
 }
 
 ////101 попытка! +почистить папки от ненужных картинок
-const popupImage = document.querySelector('.popup__zoom-image');
+const popupImage = document.querySelector('.popup_zoom-image');
 const popupClouseButtomImage = popupImage.querySelector(".popup__close");
 
 const closeZoomPopupImage = function () {
