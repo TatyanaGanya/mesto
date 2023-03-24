@@ -1,4 +1,4 @@
-//элементы Профиль
+//элементы Профиль!
 const popupProfile = document.querySelector(".popup__profile");
 const popupClouseButtomProfile = popupProfile.querySelector(".popup__close");
 const popupOpenButtomProfile = document.querySelector(".profile__edit");
