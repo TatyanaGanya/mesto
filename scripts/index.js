@@ -28,11 +28,9 @@ const initialCards = [
 
 //элементы Профиль!
 const popupProfile = document.querySelector(".popup_profile");
-
 const popupOpenButtomProfile = document.querySelector(".profile__edit");
-//const popupClouseButtomProfile = popupProfile.querySelector(".popup__close");
-const formProfileSave = popupProfile.querySelector('.popup__save');
 
+//const formProfileSave = popupProfile.querySelector('.popup__save');
 const formProfile = popupProfile.querySelector('.popup__content');
 const nameInput = popupProfile.querySelector('.popup__input_type_name');
 const jobInput = popupProfile.querySelector('.popup__input_type_job');
@@ -45,17 +43,16 @@ const popupGalery = document.querySelector(".popup_galery");
 
 const popupOpenButtomGalery = document.querySelector(".profile__add");
 //const popupClouseButtomGalery = popupGalery.querySelector(".popup__close");
-const addButton = popupGalery.querySelector('.popup__save');
+//const addButton = popupGalery.querySelector('.popup__save');
 
-//const formCard = popupGalery.querySelector('.popup__content');
+const formCard = popupGalery.querySelector('.popup__content');
 const titleInput = popupGalery.querySelector('.popup__input_type_title');
 const imageInput = popupGalery.querySelector('.popup__input_type_image');
 
-
 //элементы увеличить картинку!
-
 const popupImage = document.querySelector('.popup_zoom-image');
-
+const popupZoomImage = popupImage.querySelector('.popup__image');
+const popupZoomDescription = popupImage.querySelector('.popup__description');
 
 //Template
 const itemTemplate = document.querySelector(".template").content;
@@ -67,14 +64,11 @@ const cardDeleteGalery = list.querySelector('.card__delete');
 const closeButtons = document.querySelectorAll('.popup__close');
 
 ///кнопки и их обработка
-
-
 const openPopup = function (popup) {
   popup.classList.add("popup_open");
 };
 
 //const openPopupProfile = 
-
 popupOpenButtomProfile.addEventListener('click', function () {
   nameInput.value=profileName.innerText;
   jobInput.value=profileAbout.innerText;
@@ -82,7 +76,6 @@ popupOpenButtomProfile.addEventListener('click', function () {
 });
 
 popupOpenButtomGalery.addEventListener('click', () => openPopup(popupGalery));
-
 
 // закрытие Popup!
 const closePopup = function (popup) {
@@ -101,29 +94,33 @@ profileName.textContent = nameInput.value;
 profileAbout.textContent = jobInput.value; 
 closePopup(popupProfile);
 }; 
-  formProfile.addEventListener('submit', handleFormSubmit); 
+
+formProfile.addEventListener('submit', handleFormSubmit); 
 
 //like
-function handleCardLike (evt) {
+function putCardLike (evt) {
   evt.target.classList.toggle('card__like_active')
 }
+
 //delete card
-function handleCardDelete (evt) {
+function deleteCard (evt) {
 evt.target.closest('.card').remove();
 }
+
 // zoom
 const openZoomPopupImage = function (name, link) {
-  popupImage.querySelector('.popup__image').alt = name;
-  popupImage.querySelector('.popup__image').src = link;
-  popupImage.querySelector('.popup__description').textContent = name;
+  popupZoomImage.alt = name;
+  popupZoomImage.src = link;
+  popupZoomDescription.textContent = name;
   popupImage.classList.add("popup_open");
 };
 function setEventListeners (htmlElement) {
-  htmlElement.querySelector('.card__like').addEventListener('click', handleCardLike);
-  htmlElement.querySelector('.card__delete').addEventListener('click', handleCardDelete);
+  htmlElement.querySelector('.card__like').addEventListener('click', putCardLike);
+  htmlElement.querySelector('.card__delete').addEventListener('click', deleteCard);
 }
 
 // шаблон
+
 function createCard ({name, link}) {
   const htmlElement = itemTemplate.cloneNode(true);
   htmlElement.querySelector('.card__image').alt = name; 
@@ -141,14 +138,11 @@ initialCards.forEach(function (name, link) {
 //newCard
 function handleFormSubmitGalery(evt) {
   evt.preventDefault();
-  let image = imageInput;
-  let title = titleInput;
 
-  list.prepend(createCard({name: title.value, link: image.value}));
-
+  list.prepend(createCard({name: imageInput.value, link: titleInput.value}));
   closePopup(popupGalery);
-  image.value = ''
-  title.value = ''
-}
-addButton.addEventListener('click', handleFormSubmitGalery); 
 
+  evt.target.reset();
+}
+
+formCard.addEventListener('submit', handleFormSubmitGalery); 
