@@ -112,7 +112,7 @@ const openZoomPopupImage = function (name, link) {
   popupZoomImage.alt = name;
   popupZoomImage.src = link;
   popupZoomDescription.textContent = name;
-  popupImage.classList.add("popup_open");
+  openPopup(popupImage);
 };
 function setEventListeners (htmlElement) {
   htmlElement.querySelector('.card__like').addEventListener('click', putCardLike);
