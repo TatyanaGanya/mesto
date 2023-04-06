@@ -85,7 +85,7 @@ popupOpenButtomGalery.addEventListener('click', () => openPopup(popupGalery));
 // закрытие Popup!
 const closePopup = function (popup) {
   popup.classList.remove("popup_open");
-  document.removeEventListener('keydown', closePopupOnEsc);
+ document.removeEventListener('keydown', closePopupOnEsc);
 };
 
 closeButtons.forEach((button) => {
@@ -106,7 +106,9 @@ const closePopupByClickOnOverlay = evt => {
     closePopup(evt.currentTarget)
   }
 }
-elementPopup.forEach(element => element.addEventListener('click', closePopupByClickOnOverlay))
+elementPopup.forEach(element => element.addEventListener('click', closePopupByClickOnOverlay));
+
+
 
 
 // profile
