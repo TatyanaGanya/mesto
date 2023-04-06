@@ -42,12 +42,12 @@ const checkInputValidity = (input, {inputErrorClass, ...rest}) => {
     }
 }
 
-const hideErrorMessage = (input, currentInputErrorConteiner, inputErrorClass, rest) => {
+const hideErrorMessage = (input, currentInputErrorConteiner, {inputErrorClass, ...rest}) => {
     currentInputErrorConteiner.textContent = ''
     input.classList.remove(inputErrorClass)
 }
 
-const showErrorMessage = (input, currentInputErrorConteiner, inputErrorClass, rest) => {
+const showErrorMessage = (input, currentInputErrorConteiner, {inputErrorClass, ...rest}) => {
     currentInputErrorConteiner.textContent = input.validationMessage
     input.classList.add(inputErrorClass)
 }
