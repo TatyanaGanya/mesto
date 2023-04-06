@@ -136,7 +136,7 @@ const openZoomPopupImage = function (name, link) {
   popupZoomDescription.textContent = name;
   openPopup(popupImage);
 };
-function (htmlElement) {
+function setEventListeners (htmlElement) {
   htmlElement.querySelector('.card__like').addEventListener('click', putCardLike);
   htmlElement.querySelector('.card__delete').addEventListener('click', deleteCard);
 }
