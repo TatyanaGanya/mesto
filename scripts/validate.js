@@ -38,7 +38,7 @@ const checkInputValidity = (input, {inputErrorClass, ...rest}) => {
     if (input.checkValidity()) {
         hideErrorMessage(input, currentInputErrorConteiner, inputErrorClass, rest);
     } else {
-        showErrorMessage(input, currentInputErrorConteiner);
+        showErrorMessage(input, currentInputErrorConteiner, inputErrorClass, rest);
     }
 }
 
