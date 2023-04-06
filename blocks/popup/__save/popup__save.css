@@ -4,17 +4,21 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
+    border-radius: 2px;
+    transition: .5s;
+    margin-top: 18px;
+}
+.popup__save {
+    border: none;
     color: #fff;
     background: #000;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: .5s;
 }
 
 .popup__save:hover {
     background-color: rgba(0, 0, 0, .8);
+    cursor: pointer;
 }
+
 
 @media screen and (max-width: 540px) {
     .popup__save {

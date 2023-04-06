@@ -9,12 +9,12 @@ const initialCards = [
     link: 'https://images.unsplash.com/photo-1655208479058-4991ca8af84a'
   },
   {
-    name: 'Камушки',
-    link: 'https://pachca-prod-uploads.s3.storage.selcloud.ru/attaches/files/84316/a3de8869-f647-4ff3-bd72-bc02f27ea261/пинаю%20камушек.jpg?response-cache-control=max-age%3D3600%3B&response-content-disposition=attachment&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=142155_staply%2F20230324%2Fru-1a%2Fs3%2Faws4_request&X-Amz-Date=20230324T080602Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=152026d59083c65bd007fa67a982a22ca77e88a194d2d64dc2bc2ef167b1e07e'
+    name: 'Котик',
+    link: 'https://img.fonwall.ru/o/53/kot-belyiy-vzglyad-glaza.jpg'
   },
   {
-    name: 'Камчатка',
-    link: 'https://images.unsplash.com/photo-1606949571055-91663aef19fc'
+    name: 'Cобачка',
+    link: 'https://cdnn1.inosmi.ru/img/24985/10/249851004_0:196:2030:1211_1280x0_80_0_0_87d6869bd94c383de3e0573302893762.jpg.webp'
   },
   {
     name: 'Холмогорский район',
@@ -62,30 +62,52 @@ const cardDeleteGalery = list.querySelector('.card__delete');
 
 // общие кнопки
 const closeButtons = document.querySelectorAll('.popup__close');
+const elementPopup = document.querySelectorAll('.popup')
+
 
 ///кнопки и их обработка
 const openPopup = function (popup) {
   popup.classList.add("popup_open");
+  document.addEventListener('keydown', closePopupOnEsc);
 };
 
 //const openPopupProfile = 
 popupOpenButtomProfile.addEventListener('click', function () {
   nameInput.value=profileName.innerText;
   jobInput.value=profileAbout.innerText;
+  
   openPopup(popupProfile) 
 });
 
 popupOpenButtomGalery.addEventListener('click', () => openPopup(popupGalery));
 
+
 // закрытие Popup!
 const closePopup = function (popup) {
   popup.classList.remove("popup_open");
+  document.removeEventListener('keydown', closePopupOnEsc);
 };
 
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
   button.addEventListener('click', () => closePopup(popup));
 });
+
+//ESC !
+function closePopupOnEsc(evt) {
+  if(evt.key === 'Escape') {
+  const elementPopap = document.querySelector('.popup_open')
+    closePopup(elementPopap)
+  }
+}
+//ClickOnOverlay
+const closePopupByClickOnOverlay = evt => {
+  if (evt.target === evt.currentTarget) { 
+    closePopup(evt.currentTarget)
+  }
+}
+elementPopup.forEach(element => element.addEventListener('click', closePopupByClickOnOverlay))
+
 
 // profile
 function handleFormSubmit (evt) { 
@@ -114,7 +136,7 @@ const openZoomPopupImage = function (name, link) {
   popupZoomDescription.textContent = name;
   openPopup(popupImage);
 };
-function setEventListeners (htmlElement) {
+function (htmlElement) {
   htmlElement.querySelector('.card__like').addEventListener('click', putCardLike);
   htmlElement.querySelector('.card__delete').addEventListener('click', deleteCard);
 }
@@ -139,10 +161,12 @@ initialCards.forEach(function (name, link) {
 function handleFormSubmitGalery(evt) {
   evt.preventDefault();
 
-  list.prepend(createCard({name: imageInput.value, link: titleInput.value}));
+  list.prepend(createCard({name: titleInput.value, link: imageInput.value}));
   closePopup(popupGalery);
 
   evt.target.reset();
 }
 
 formCard.addEventListener('submit', handleFormSubmitGalery); 
+
+
