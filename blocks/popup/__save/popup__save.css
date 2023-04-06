@@ -7,8 +7,6 @@
     border-radius: 2px;
     transition: .5s;
     margin-top: 18px;
-}
-.popup__save {
     border: none;
     color: #fff;
     background: #000;
@@ -18,7 +16,6 @@
     background-color: rgba(0, 0, 0, .8);
     cursor: pointer;
 }
-
 
 @media screen and (max-width: 540px) {
     .popup__save {

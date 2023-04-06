@@ -165,6 +165,5 @@ function handleFormSubmitGalery(evt) {
   evt.target.reset();
 }
 
-formCard.addEventListener('submit', handleFormSubmitGalery); 
-console.log(validation)
+formCard.addEventListener('submit', handleFormSubmitGalery);
 
