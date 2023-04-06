@@ -108,9 +108,6 @@ const closePopupByClickOnOverlay = evt => {
 }
 elementPopup.forEach(element => element.addEventListener('click', closePopupByClickOnOverlay));
 
-
-
-
 // profile
 function handleFormSubmit (evt) { 
   evt.preventDefault(); 
@@ -165,7 +162,6 @@ function handleFormSubmitGalery(evt) {
 
   list.prepend(createCard({name: titleInput.value, link: imageInput.value}));
   closePopup(popupGalery);
-
   evt.target.reset();
 }
 
