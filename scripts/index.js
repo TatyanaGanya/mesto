@@ -69,6 +69,7 @@ const elementPopup = document.querySelectorAll('.popup')
 const openPopup = function (popup) {
   popup.classList.add("popup_open");
   document.addEventListener('keydown', closePopupOnEsc);
+  checkInputValidity(input)
 };
 
 //const openPopupProfile = 
