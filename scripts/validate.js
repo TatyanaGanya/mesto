@@ -66,17 +66,5 @@ const disableButton = (button, {inactiveButtonClass, ...rest}) => {
     button.classList.add(inactiveButtonClass)
     button.setAttribute('disabled', true)
 }
-/// ошибка валидации приоткрытии popup///
-const resetErrorForm = (form) => {
-    form.querySelector(validationConfig.inputSelector).forEach((input) => {
-        const currentInputError = document.querySelector(`#$(input.id)-error`);
-        if(!input.validity.valid) {
-            hideErrorMessage(input, currentInputError,validationConfig.inputErrorClass)
-        }
-    })
-console.log(form)
-}
-
-
 
 enableValidation(validationConfig)
