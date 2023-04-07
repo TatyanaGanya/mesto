@@ -1,4 +1,4 @@
-const validation = {
+const validationConfig = {
     formSelector: '.popup__content',// форма
     inputSelector: '.popup__input',// инпут
     submitButtonSelector: '.popup__save',// кнопка
@@ -6,7 +6,6 @@ const validation = {
     inputErrorClass: 'popup__input_error',//инпут невалидный
     errorClass: 'popup__error'//!а хз
 };
-
 
 const enableValidation =({formSelector, ...rest}) => {
     const forms = Array.from(document.querySelectorAll(formSelector));
@@ -42,6 +41,7 @@ const checkInputValidity = (input, {inputErrorClass, ...rest}) => {
     }
 }
 
+// ошибка ввода
 const hideErrorMessage = (input, currentInputErrorConteiner, inputErrorClass, rest) => {
     currentInputErrorConteiner.textContent = ''
     input.classList.remove(inputErrorClass)
@@ -66,5 +66,17 @@ const disableButton = (button, {inactiveButtonClass, ...rest}) => {
     button.classList.add(inactiveButtonClass)
     button.setAttribute('disabled', true)
 }
+/// ошибка валидации приоткрытии popup///
+const resetErrorForm = (form) => {
+    form.querySelector(validationConfig.inputSelector).forEach((input) => {
+        const currentInputError = document.querySelector(`#$(input.id)-error`);
+        if(!input.validity.valid) {
+            hideErrorMessage(input, currentInputError,validationConfig.inputErrorClass)
+        }
+    })
+console.log(form)
+}
 
-enableValidation(validation)
+
+
+enableValidation(validationConfig)
