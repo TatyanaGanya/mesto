@@ -1,5 +1,7 @@
-import initialCards from "./constants";
-import {Card} from "./card";
+import initialCards from "./constants"
+import {Card} from "./card"
+
+//import {Card} from "./card";
 
 //элементы Профиль!
 const popupProfile = document.querySelector(".popup_profile");

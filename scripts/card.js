@@ -1,4 +1,4 @@
- class Card {
+export class Card {
     constructor(cardData, selectorTemplate, openZoomPopupImage) {
         this._cardData = cardData;
         this._link = cardData.link;
