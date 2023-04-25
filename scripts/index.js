@@ -1,3 +1,6 @@
+import initialCards from "./constants";
+import {Card} from "./card";
+
 //элементы Профиль!
 const popupProfile = document.querySelector(".popup_profile");
 const popupOpenButtomProfile = document.querySelector(".profile__edit");
@@ -34,6 +37,9 @@ const cardDeleteGalery = list.querySelector('.card__delete');
 const closeButtons = document.querySelectorAll('.popup__close');
 const elementPopup = document.querySelectorAll('.popup')
 
+//new const
+const selectorTemplate = document.querySelector(".template"); 
+
 ///кнопки и их обработка
 const openPopup = function (popup) {
   popup.classList.add("popup_open");
@@ -46,7 +52,6 @@ popupOpenButtomProfile.addEventListener('click', function () {
   jobInput.value=profileAbout.innerText;
   openPopup(popupProfile) 
 });
-
 popupOpenButtomGalery.addEventListener('click', () => openPopup(popupGalery));
 
 // закрытие Popup!
@@ -85,50 +90,37 @@ function submitEditProfileForm (evt) {
 
 formProfile.addEventListener('submit', submitEditProfileForm); 
 
-//like
-function putCardLike (evt) {
-  evt.target.classList.toggle('card__like_active')
-}
-
-//delete card
-function deleteCard (evt) {
-  evt.target.closest('.card').remove();
-}
-
-// zoom
-const openZoomPopupImage = function (name, link) {
-  popupZoomImage.alt = name;
-  popupZoomImage.src = link;
-  popupZoomDescription.textContent = name;
+// шаблон карточки и тд
+function openZoomPopupImage (cardData) {
+  popupZoomImage.alt = cardData.name;
+  popupZoomImage.src = cardData.link;
+  popupZoomDescription.textContent = cardData.name;
   openPopup(popupImage);
 };
-function setEventListeners (htmlElement) {
-  htmlElement.querySelector('.card__like').addEventListener('click', putCardLike);
-  htmlElement.querySelector('.card__delete').addEventListener('click', deleteCard);
+
+function createCardGalery(element) {
+  const card = new Card(element, selectorTemplate, openZoomPopupImage);
+  const cardElement = card.createCard()
+  return cardElement 
 }
 
-// шаблон
-function createCard ({name, link}) {
-  const htmlElement = itemTemplate.cloneNode(true);
-  const cardImage =  htmlElement.querySelector('.card__image');
-  cardImage.alt = name; 
-  cardImage.src = link;
-  htmlElement.querySelector('.card__text').textContent = name;
-  cardImage.addEventListener('click', () => openZoomPopupImage(name,link));
-  setEventListeners(htmlElement);
-  return htmlElement;
+function addCard(container, card) {
+  container.prepend(card);
 }
 
 // масив 
-initialCards.forEach(function (name, link) {
-  list.append(createCard(name, link)); 
+initialCards.forEach(element => {
+  // const card = new Card(element, selectorTemplate, openZoomPopupImage);
+ addCard(list, createCardGalery(element))
 })
 
-//newCard
+//new card
 function handleFormSubmitGalery(evt) {
   evt.preventDefault();
-  list.prepend(createCard({name: titleInput.value, link: imageInput.value}));
+  const cardData = {name: titleInput.value, link: imageInput.value};
+  //const card = new Card(cardData, selectorTemplate, openZoomPopupImage)
   disableButton(addButton, validationConfig)
+  addCard(list, createCardGalery(cardData))
   closePopup(popupGalery);
   evt.target.reset();
 }
