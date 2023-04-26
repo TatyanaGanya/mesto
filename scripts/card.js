@@ -8,8 +8,10 @@ export class Card {
         this._openZoomPopupImage = openZoomPopupImage;
     }
     //const selectorTemplate => itemTemplate
+    //new const
+//
     _getTemplateClone() {
-        const itemTemplate = selectorTemplate.content.querySelector('.card').cloneNode(true);
+        const itemTemplate = document.querySelector(".template").content.querySelector('.card').cloneNode(true);
         return itemTemplate
     }
 

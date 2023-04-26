@@ -1,7 +1,5 @@
-import initialCards from "./constants"
-import {Card} from "./card"
-
-//import {Card} from "./card";
+import initialCards from "./constants.js"
+import {Card} from "./card.js"
 
 //элементы Профиль!
 const popupProfile = document.querySelector(".popup_profile");
@@ -29,18 +27,17 @@ const popupImage = document.querySelector('.popup_zoom-image');
 const popupZoomImage = popupImage.querySelector('.popup__image');
 const popupZoomDescription = popupImage.querySelector('.popup__description');
 
-//Template
-const itemTemplate = document.querySelector(".template").content;
+// //Template
+// //
+const selectorTemplate = document.querySelector(".template");
 const list = document.querySelector(".cards");
-const likeButton = list.querySelector('.card__like');
-const cardDeleteGalery = list.querySelector('.card__delete');
+// const likeButton = list.querySelector('.card__like');
+// const cardDeleteGalery = list.querySelector('.card__delete');
 
 // общие кнопки
 const closeButtons = document.querySelectorAll('.popup__close');
 const elementPopup = document.querySelectorAll('.popup')
 
-//new const
-const selectorTemplate = document.querySelector(".template"); 
 
 ///кнопки и их обработка
 const openPopup = function (popup) {
@@ -106,14 +103,19 @@ function createCardGalery(element) {
   return cardElement 
 }
 
-function addCard(container, card) {
+//объеденить
+function addCardPrepend(container, card) {
   container.prepend(card);
+}
+
+function addCardAppend(container, card) {
+  container.append(card);
 }
 
 // масив 
 initialCards.forEach(element => {
   // const card = new Card(element, selectorTemplate, openZoomPopupImage);
- addCard(list, createCardGalery(element))
+  addCardAppend(list, createCardGalery(element))
 })
 
 //new card
@@ -122,7 +124,7 @@ function handleFormSubmitGalery(evt) {
   const cardData = {name: titleInput.value, link: imageInput.value};
   //const card = new Card(cardData, selectorTemplate, openZoomPopupImage)
   disableButton(addButton, validationConfig)
-  addCard(list, createCardGalery(cardData))
+  addCardPrepend(list, createCardGalery(cardData))
   closePopup(popupGalery);
   evt.target.reset();
 }
