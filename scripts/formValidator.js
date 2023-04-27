@@ -19,7 +19,6 @@ export class FormValidator {
     _showErrorMessage(input, currentInputErrorConteiner){
         currentInputErrorConteiner.textContent = input.validationMessage
         input.classList.add(this._inputErrorClass)
-        console.log( input.validationMessage)
     };
 
     _checkInputValidity(input) {

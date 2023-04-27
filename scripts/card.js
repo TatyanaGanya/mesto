@@ -1,9 +1,9 @@
 export class Card {
-  constructor(card, selectorTemplate, openZoomPopupImage) {
-      this._cardData = card; 
+  constructor(card, elementTemplate, openZoomPopupImage) {
+      this._card = card; 
       this._link = card.link;
       this._name = card.name;
-      this._selectorTemplate = selectorTemplate;
+      this._elementTemplate = elementTemplate;
       this._openZoomPopupImage = openZoomPopupImage;
     }
 
@@ -11,18 +11,19 @@ export class Card {
     const itemTemplate = document.querySelector(".template").content.querySelector('.card').cloneNode(true);
       return itemTemplate
     }
-
+    
     //like
-  _putCardLike(evt) {
-    evt.target.classList.toggle('card__like_active');
+  _putCardLike = () => {
+    this._likeElement.classList.toggle('card__like_active');
   }
     //delete card
-  _deleteCard(evt) {
-    evt.target.closest('.card').remove();
+  _deleteCard = () => {
+    this._cloneElement.remove();
+    this._cloneElement = null;
   }
   //zoom
   _handeleOpenZoomImage = () => {
-    this._openZoomPopupImage(this._cardData)
+    this._openZoomPopupImage(this._card)
     }
 
   _setEventListener() {

@@ -5,7 +5,6 @@ import { FormValidator } from "./formValidator.js"
 //элементы Профиль!
 const popupProfile = document.querySelector(".popup_profile");
 const popupOpenButtomProfile = document.querySelector(".profile__edit");
-//const formProfileSave = popupProfile.querySelector('.popup__save');
 const formProfile = popupProfile.querySelector('.popup__content');
 const nameInput = popupProfile.querySelector('.popup__input_type_name');
 const jobInput = popupProfile.querySelector('.popup__input_type_job');
@@ -22,12 +21,11 @@ const popupImage = document.querySelector('.popup_zoom-image');
 const popupZoomImage = popupImage.querySelector('.popup__image');
 const popupZoomDescription = popupImage.querySelector('.popup__description');
 // //Template
-const selectorTemplate = document.querySelector(".template");
+const elementTemplate = document.querySelector(".template");
 const list = document.querySelector(".cards");
 // общие кнопки
 const closeButtons = document.querySelectorAll('.popup__close');
 const elementPopup = document.querySelectorAll('.popup')
-
 //формы, валидация
 const formProfileElement = document.forms.profile_form;
 const formAddElement = document.forms.profile_title;
@@ -94,7 +92,6 @@ function submitEditProfileForm (evt) {
 }; 
 formProfile.addEventListener('submit', submitEditProfileForm); 
 
-
 // увеличение картинки
 function openZoomPopupImage (card) {
   popupZoomImage.alt = card.name;
@@ -105,7 +102,7 @@ function openZoomPopupImage (card) {
 
 //шаблон карточки создание карточки по класс
 function createCardGalery(element) {
-  const card = new Card(element, selectorTemplate, openZoomPopupImage);
+  const card = new Card(element, elementTemplate, openZoomPopupImage);
   const cardElement = card.createCard()
   return cardElement 
 }
@@ -137,10 +134,8 @@ formCard.addEventListener('submit', handleFormSubmitGalery);
 
 //экземпляры форм для валидности
 const formProfileElementValidator = new FormValidator(validationConfig, formProfileElement);
-console.log(formProfileElementValidator)
 formProfileElementValidator.enableValidation()
 
 const formAddElementValidator = new FormValidator(validationConfig, formAddElement);
-console.log(formAddElementValidator)
 formAddElementValidator.enableValidation()
 
