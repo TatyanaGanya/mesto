@@ -50,6 +50,7 @@ const hideErrorMessage = (input, currentInputErrorConteiner, inputErrorClass, re
 const showErrorMessage = (input, currentInputErrorConteiner, inputErrorClass, rest) => {
     currentInputErrorConteiner.textContent = input.validationMessage
     input.classList.add(inputErrorClass)
+    console.log( input.validationMessage)
 }
 
 ////
