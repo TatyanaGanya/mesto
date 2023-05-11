@@ -1,6 +1,7 @@
-import initialCards from "./constants.js"
-import {Card} from "./card.js"
-import { FormValidator } from "./formValidator.js"
+import initialCards from "./scripts/utils/constants.js"
+import {Card} from "./scripts/companents/card.js"
+import { FormValidator } from "./scripts/companents/formValidator.js"
+import {Popup} from "./scripts/companents/popup.js"
 
 //элементы Профиль!
 const popupProfile = document.querySelector(".popup_profile");
@@ -26,9 +27,13 @@ const list = document.querySelector(".cards");
 // общие кнопки
 const closeButtons = document.querySelectorAll('.popup__close');
 const elementPopup = document.querySelectorAll('.popup')
+
 //формы, валидация
 const formProfileElement = document.forms.profile_form;
 const formAddElement = document.forms.profile_title;
+
+//const = selector
+const popupSelectorProfile = '.popup_profile';
 
 //const => index
 const validationConfig = {
@@ -40,39 +45,46 @@ const validationConfig = {
     errorClass: 'popup__error'//!а хз 
   };
 
-///кнопки открытия и их обработка
-const openPopup = function (popup) {
-  popup.classList.add("popup_open");
-  document.addEventListener('keydown', closePopupOnEsc);
-};
+
+const popupProfileN = new Popup(popupSelectorProfile)
+console.log(popupProfileN)
+
+// ///кнопки открытия и их обработка
+// const openPopup = function (popup) {
+//   popup.classList.add("popup_open");
+//   document.addEventListener('keydown', closePopupOnEsc);
+// };
 
 //const openPopupProfile
 popupOpenButtomProfile.addEventListener('click', function () {
   nameInput.value=profileName.innerText;
   jobInput.value=profileAbout.innerText;
   formProfileElementValidator.resetErrorOpenForm()
-  openPopup(popupProfile) 
+  //openPopup(popupProfile) 
+  popupProfileN.open()
 });
 popupOpenButtomGalery.addEventListener('click', () => openPopup(popupGalery));
 
-// закрытие Popup!
-const closePopup = function (popup) {
-  popup.classList.remove("popup_open");
-  document.removeEventListener('keydown', closePopupOnEsc);
-};
+// // закрытие Popup!
+// const closePopup = function (popup) {
+//   popup.classList.remove("popup_open");
+//   document.removeEventListener('keydown', closePopupOnEsc);
+// };
 
-closeButtons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
-});
+// closeButtons.forEach((button) => {
+//   const popup = button.closest('.popup');
+//   button.addEventListener('click', () => closePopup(popup));
+// });
 
-//ESC !
-function closePopupOnEsc(evt) {
-  if(evt.key === 'Escape') {
-    const popup = document.querySelector('.popup_open')
-    closePopup(popup)
-  }
-}
+// //ESC !
+// function closePopupOnEsc(evt) {
+//   if(evt.key === 'Escape') {
+//     const popup = document.querySelector('.popup_open')
+//     closePopup(popup)
+//   }
+// }
+
+
 
 //ClickOnOverlay
 const closePopupByClickOnOverlay = evt => {
