@@ -1,8 +1,8 @@
 export class Card {
   constructor(card, elementTemplate, openZoomPopupImage) {
       this._card = card; 
-      this._link = card.link;
-      this._name = card.name;
+      this._link = card.image;
+      this._name = card.title;
       this._elementTemplate = elementTemplate;
       this._openZoomPopupImage = openZoomPopupImage;
     }
