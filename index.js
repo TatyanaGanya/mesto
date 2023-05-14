@@ -1,7 +1,10 @@
 import initialCards from "./scripts/utils/constants.js"
 import {Card} from "./scripts/companents/card.js"
 import { FormValidator } from "./scripts/companents/formValidator.js"
-import {Popup} from "./scripts/companents/popup.js"
+import PopupWithImage from "./scripts/companents/popupWithImage.js";
+import { Popup } from "./scripts/companents/popup.js";
+import Section from "./scripts/companents/section.js";
+
 
 //элементы Профиль!
 const popupProfile = document.querySelector(".popup_profile");
@@ -18,12 +21,12 @@ const formCard = popupGalery.querySelector('.popup__content');
 const titleInput = popupGalery.querySelector('.popup__input_type_title');
 const imageInput = popupGalery.querySelector('.popup__input_type_image');
 //элементы увеличить картинку!
-const popupImage = document.querySelector('.popup_zoom-image');
-const popupZoomImage = popupImage.querySelector('.popup__image');
-const popupZoomDescription = popupImage.querySelector('.popup__description');
-// //Template
-const elementTemplate = document.querySelector(".template");
-const list = document.querySelector(".cards");
+const popupImageq = document.querySelector('.popup_zoom-image');
+const popupZoomImage = popupImageq.querySelector('.popup__image');
+const popupZoomDescription = popupImageq.querySelector('.popup__description');
+
+
+
 // общие кнопки
 const closeButtons = document.querySelectorAll('.popup__close');
 const elementPopup = document.querySelectorAll('.popup')
@@ -34,6 +37,13 @@ const formAddElement = document.forms.profile_title;
 
 //const = selector
 const popupSelectorProfile = '.popup_profile';
+const popupSelectorImage = '.popup_zoom-image';
+
+const templateSelector ='.template';
+const listSelector = '.cards';
+// //Template
+const elementTemplate = document.querySelector(".template");
+const list = document.querySelector(".cards");
 
 //const => index
 const validationConfig = {
@@ -46,8 +56,12 @@ const validationConfig = {
   };
 
 
-const popupProfileN = new Popup(popupSelectorProfile)
-console.log(popupProfileN)
+const popupImage = new PopupWithImage(popupSelectorImage);
+
+const profilePopup = new Popup(popupSelectorProfile);
+
+console.log(profilePopup)
+console.log(popupImage)
 
 // ///кнопки открытия и их обработка
 // const openPopup = function (popup) {
@@ -61,7 +75,8 @@ popupOpenButtomProfile.addEventListener('click', function () {
   jobInput.value=profileAbout.innerText;
   formProfileElementValidator.resetErrorOpenForm()
   //openPopup(popupProfile) 
-  popupProfileN.open()
+  profilePopup.open()
+
 });
 popupOpenButtomGalery.addEventListener('click', () => openPopup(popupGalery));
 
@@ -84,15 +99,14 @@ popupOpenButtomGalery.addEventListener('click', () => openPopup(popupGalery));
 //   }
 // }
 
+// //ClickOnOverlay
+// const closePopupByClickOnOverlay = evt => {
+//   if (evt.target === evt.currentTarget) { 
+//     closePopup(evt.currentTarget)
+//   }
+// }
 
-
-//ClickOnOverlay
-const closePopupByClickOnOverlay = evt => {
-  if (evt.target === evt.currentTarget) { 
-    closePopup(evt.currentTarget)
-  }
-}
-elementPopup.forEach(element => element.addEventListener('click', closePopupByClickOnOverlay));
+//elementPopup.forEach(element => element.addEventListener('click', closePopupByClickOnOverlay));
 
 // profile
 function submitEditProfileForm (evt) { 
@@ -100,24 +114,37 @@ function submitEditProfileForm (evt) {
   profileName.textContent = nameInput.value; 
   profileAbout.textContent = jobInput.value; 
 
-  closePopup(popupProfile);
+  //closePopup(popupProfile);
 }; 
 formProfile.addEventListener('submit', submitEditProfileForm); 
 
 // увеличение картинки
-function openZoomPopupImage (card) {
-  popupZoomImage.alt = card.name;
-  popupZoomImage.src = card.link;
-  popupZoomDescription.textContent = card.name;
-  openPopup(popupImage);
-};
+// function openZoomPopupImage (card) {
+//   popupZoomImage.alt = card.name;
+//   popupZoomImage.src = card.link;
+//   popupZoomDescription.textContent = card.name;
+//   openPopup(popupImageq);
+// };
 
 //шаблон карточки создание карточки по класс
-function createCardGalery(element) {
-  const card = new Card(element, elementTemplate, openZoomPopupImage);
-  const cardElement = card.createCard()
-  return cardElement 
-}
+// function createCardGalery(element) {
+//   const card = new Card(element, elementTemplate, popupImage.open);
+//   const cardElement = card.createCard()
+//   return cardElement 
+// }
+
+// SECTION (шаблон карточки создание карточки по класс)
+const section = new Section({
+  items: initialCards,
+  renderer: (element) => {
+  const card = new Card(element, templateSelector, popupImage.open);
+  return card.createCard();
+  }
+},listSelector)
+
+section.addCardFromArray()
+
+
 
 //список карточек
 function addCardPrepend(container, card) {
