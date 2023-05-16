@@ -1,12 +1,10 @@
-
-import { Card } from "./scripts/companents/card.js"
-import { FormValidator } from "./scripts/companents/formValidator.js"
-import PopupWithImage from "./scripts/companents/popupWithImage.js";
-import Section from "./scripts/companents/section.js";
-import { UserInfo } from "./scripts/companents/userInfo.js";
-import  PopupWithForm  from "./scripts/companents/popupWithForm.js";
-
-import { initialCards, popupOpenButtomProfile, popupOpenButtomGalery, formProfileElement, formAddElement, popupSelectorProfile, popupSelectorGalery,popupSelectorImage,templateSelector,listSelector,infoConfig,validationConfig } from "./scripts/utils/constants.js"
+import { Card } from "../scripts/companents/card.js"
+import { FormValidator } from "../scripts/companents/formValidator.js"
+import PopupWithImage from "../scripts/companents/popupWithImage.js";
+import Section from "../scripts/companents/section.js";
+import { UserInfo } from "../scripts/companents/userInfo.js";
+import  PopupWithForm  from "../scripts/companents/popupWithForm.js";
+import { initialCards, popupOpenButtomProfile, popupOpenButtomGalery, formProfileElement, formAddElement, popupSelectorProfile, popupSelectorGalery,popupSelectorImage,templateSelector,listSelector,infoConfig,validationConfig } from "../scripts/utils/constants.js"
 
 //image 
 const popupImage = new PopupWithImage(popupSelectorImage);
@@ -28,9 +26,8 @@ section.addCardFromArray()
 const userInfo = new UserInfo(infoConfig)
 
 // //profile обработка формы
-const profilePopup = new PopupWithForm(popupSelectorProfile, (evt) => {
-  evt.preventDefault();
-  userInfo.setUserInfo(profilePopup.getIputValue())
+const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
+  userInfo.setUserInfo(data)
   profilePopup.close();
 })
 
@@ -39,14 +36,13 @@ popupOpenButtomProfile.addEventListener('click', () => {
   formProfileElementValidator.resetErrorOpenForm()
   profilePopup.open()
 });
-
 profilePopup.setEvenListners();
 
 //newcard обработка формы
-const popupAddCard = new PopupWithForm(popupSelectorGalery, (evt) => {
-  evt.preventDefault();
-  section.addItem(section.renderer(popupAddCard.getIputValue()))
+const popupAddCard = new PopupWithForm(popupSelectorGalery, (data) => {
+  section.addItem(data)
   popupAddCard.close();
+  formAddElementValidator.resetErrorOpenForm()
 })
 
 popupAddCard.setEvenListners();

@@ -1,10 +1,10 @@
 export class Card {
-  constructor(card, elementTemplate, openZoomPopupImage) {
+  constructor(card, elementTemplate, handleCardClick) {
       this._card = card; 
       this._link = card.image;
       this._name = card.title;
       this._elementTemplate = elementTemplate;
-      this._openZoomPopupImage = openZoomPopupImage;
+      this._handleCardClick = handleCardClick;
     }
 
   _getTemplateClone() {
@@ -21,9 +21,9 @@ export class Card {
     this._cloneElement.remove();
     this._cloneElement = null;
   }
-  //zoom
+  //zoom пере
   _handeleOpenZoomImage = () => {
-    this._openZoomPopupImage(this._card)
+    this._handleCardClick(this._card)
     }
 
   _setEventListener() {
