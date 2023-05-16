@@ -1,3 +1,4 @@
+import './index.css'
 import { Card } from "../scripts/companents/card.js"
 import { FormValidator } from "../scripts/companents/formValidator.js"
 import PopupWithImage from "../scripts/companents/popupWithImage.js";
