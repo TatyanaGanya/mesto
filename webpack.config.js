@@ -45,17 +45,10 @@ module.exports = {
         'postcss-loader']
       }, 
       {
-        test: /\.(png|jpe?g|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              esModule: true
-            }
-          },
-        ],
-
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
+      type: "asset/resource",
       },
+
     ],
   },
 }
