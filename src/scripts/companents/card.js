@@ -1,16 +1,17 @@
 export class Card {
-  constructor(card, templateSelector, handleCardClick) {
+  constructor(card, elementTemplate, handleCardClick) {
       this._card = card; 
       this._link = card.image;
       this._name = card.title;
-      this._templateSelector = templateSelector;
+      this._elementTemplate = elementTemplate;
       this._handleCardClick = handleCardClick;
     }
 
   _getTemplateClone() {
-      return document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true)
+    const itemTemplate = document.querySelector(".template").content.querySelector('.card').cloneNode(true);
+      return itemTemplate
     }
-
+    
     //like
   _putCardLike = () => {
     this._likeElement.classList.toggle('card__like_active');

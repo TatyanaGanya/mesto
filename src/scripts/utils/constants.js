@@ -39,8 +39,6 @@ const popupSelectorGalery = '.popup_galery';
 const popupSelectorImage = '.popup_zoom-image';
 const templateSelector ='.template';
 const listSelector = '.cards';
-
-
 //профиль
 const infoConfig= {
   profileNameSelector: '.profile__name',

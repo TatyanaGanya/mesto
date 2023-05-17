@@ -43,20 +43,14 @@ profilePopup.setEvenListners();
 const popupAddCard = new PopupWithForm(popupSelectorGalery, (data) => {
   section.addItem(data)
   popupAddCard.close();
-  
+  formAddElementValidator.resetErrorOpenForm()
 })
 
 popupAddCard.setEvenListners();
-popupOpenButtomGalery.addEventListener('click', () => {
-  formAddElementValidator.resetErrorOpenForm()
-  popupAddCard.open()
-});
+popupOpenButtomGalery.addEventListener('click', () => popupAddCard.open());
 
 //экземпляры форм для валидности
 const formProfileElementValidator = new FormValidator(validationConfig, formProfileElement);
 formProfileElementValidator.enableValidation()
 const formAddElementValidator = new FormValidator(validationConfig, formAddElement);
 formAddElementValidator.enableValidation()
-
-const SectionitemTemplate = document.querySelector(".template").content.querySelector('.card').cloneNode(true);
-     
