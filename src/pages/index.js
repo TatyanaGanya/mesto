@@ -43,11 +43,14 @@ profilePopup.setEvenListners();
 const popupAddCard = new PopupWithForm(popupSelectorGalery, (data) => {
   section.addItem(data)
   popupAddCard.close();
-  formAddElementValidator.resetErrorOpenForm()
+  
 })
 
 popupAddCard.setEvenListners();
-popupOpenButtomGalery.addEventListener('click', () => popupAddCard.open());
+popupOpenButtomGalery.addEventListener('click', () => {
+  formAddElementValidator.resetErrorOpenForm()
+  popupAddCard.open()
+});
 
 //экземпляры форм для валидности
 const formProfileElementValidator = new FormValidator(validationConfig, formProfileElement);
