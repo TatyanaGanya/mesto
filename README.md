@@ -21,6 +21,6 @@
 
 Сайт оформлен по макету из **Figma**
 
-* [Ссылка на макет](https://tatyanaganya.github.io/mesto/)
+* [Ссылка на макет](https://tatyanaganya.github.io/mesto/src/index.html)
 
 
