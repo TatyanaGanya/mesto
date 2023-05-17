@@ -19,29 +19,11 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(?:js)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
-      },
-      {
         test: /\.css$/,
-        // при обработке этих файлов нужно использовать
-        // MiniCssExtractPlugin.loader и css-loader
-        use: [
-          MiniCssExtractPlugin.loader, 
-          {
+        use: [MiniCssExtractPlugin.loader, {
           loader: 'css-loader',
-          // добавьте объект options
           options: { importLoaders: 1 }
         },
-          // Добавьте postcss-loader
         'postcss-loader']
       }, 
       {
