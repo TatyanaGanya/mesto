@@ -2,6 +2,9 @@ export class UserInfo {
     constructor(infoConfig) {
         this._profileName = document.querySelector(infoConfig.profileNameSelector);
         this._profileJob = document.querySelector(infoConfig.profileJobSelector);
+        this._profileAvatar = document.querySelector(
+            infoConfig.profileAvatarSelection)
+        
     }
 //возвращаем обьект 
     getUserInfo() {
@@ -9,8 +12,9 @@ export class UserInfo {
     }
 
 // добавляет на страницу
-    setUserInfo(data) {
-        this._profileName.textContent = data.profile_name;
-        this._profileJob.textContent = data.profile_job;
+    setUserInfo({profile_name, profile_job, profile_avatar}){
+        this._profileName.textContent = profile_name;
+        this._profileJob.textContent = profile_job;
+        this._profileAvatar.src = profile_avatar;
     }
 }
