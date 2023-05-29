@@ -60,7 +60,7 @@ export class Card {
 
   createCard() {
    this._imageElement.src = this._link;
-    this._imageElement.alt = this._name;
+  this._imageElement.alt = this._name;
     this._textElement.textContent = this._name;
     this._changeVisibleFOrIrashButton()
     this._setEventListener()
