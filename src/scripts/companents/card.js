@@ -1,14 +1,15 @@
 export class Card {
   constructor(dataCard, templateSelector, handleCardClick) {
-    //this._card = card; 
+    this._card = card; 
    console.log(dataCard)
 
       this._link = dataCard.link;///!!!! image
       this._name =dataCard.name;
       this._myId = dataCard.myid;
-      this._owerId = dataCard.owner._id;
+      this._ownerId = dataCard.owner._id;
       this._templateSelector = templateSelector;
       this._handleCardClick = handleCardClick;
+      this._deletePopupCard = deletePopupCard;
       this._cloneElement = this._getTemplateClone();
       this._imageElement = this._cloneElement.querySelector('.card__image');
       this._textElement = this._cloneElement.querySelector('.card__text');
@@ -28,8 +29,7 @@ export class Card {
   }
     //delete card
   _deleteCard = () => {
-    this._cloneElement.remove();
-    this._cloneElement = null;
+    this._deletePopupCard(this)
   }
   //zoom пере
   _handeleOpenZoomImage = () => {
@@ -41,8 +41,20 @@ export class Card {
     this._deletaElement.addEventListener('click', this._deleteCard);
     this._imageElement.addEventListener('click', this._handeleOpenZoomImage)
     }
+
+    removeCard() {
+    this._cloneElement.remove();
+    this._cloneElement = null;
+    }
+
     _changeVisibleFOrIrashButton() {
-      this._myId === this._owerId ? this._deletaElement.style.display = 'block' : this._deletaElement.style.display = 'none'
+      if (this._myId === this._ownerId) {
+        this._deletaElement.style.display = 'block'
+     } else {
+      this._deletaElement.style.display = 'none'
+     }
+     // this._myId === this._owerId ? this._deletaElement.style.display = 'block' : this._deletaElement.style.display = 'none'
+
     }
 
   createCard() {

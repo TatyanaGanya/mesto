@@ -7,6 +7,7 @@ import { UserInfo } from "../scripts/companents/userInfo.js";
 import  PopupWithForm  from "../scripts/companents/popupWithForm.js";
 import { initialCards, popupOpenButtomProfile, popupOpenButtomGalery, formProfileElement, formAddElement, popupSelectorProfile, popupSelectorGalery,popupSelectorImage,templateSelector,listSelector,infoConfig,validationConfig } from "../scripts/utils/constants.js"
 import Api from '../scripts/companents/api.js';
+import PopupCardDelete from '../scripts/companents/popupCardDelete.js';
 
 
 // api pr9
@@ -31,7 +32,7 @@ const section = new Section({
   renderer: (element) => {
   const card = new Card(element, templateSelector, popupImage.open);
   return card.createCard();
-  }
+}
 },listSelector)
 
 //создание карточек из масива
@@ -67,7 +68,7 @@ profilePopup.setEvenListners();
 const popupAddCard = new PopupWithForm(popupSelectorGalery, (data) => {
   section.addItemPrepend(data)
   popupAddCard.close();
-  
+
 })
 
 popupAddCard.setEvenListners();

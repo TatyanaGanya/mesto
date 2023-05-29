@@ -8,7 +8,9 @@ export class UserInfo {
     }
 //возвращаем обьект 
     getUserInfo() {
-        return {profile_name: this._profileName.textContent, profile_job: this._profileJob.textContent}
+        return {profile_name: this._profileName.textContent, profile_job: this._profileJob.textContent,
+        profile_avatar: this._profileAvatar.src
+        }
     }
 
 // добавляет на страницу
