@@ -14,9 +14,11 @@ export default class Api {
         // если ошибка, отклоняем промис
         return Promise.reject(`Ошибка: ${res.status}`)
      }
+
+//код: return res.ok ? res>joson() : Promise.reject
     
 
-//загрузка карточки с сервера
+//загрузка профиля с сервера
     getInfo() {
         return fetch(`${this._url}/users/me`, {
             headers: {
@@ -24,18 +26,6 @@ export default class Api {
             }
         })
        .then(this._checkResponse)
-    }
-
-    setUserInfo(data){
-        return fetch (`${this._url}/users/me`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-              name: data.profile_name,
-              about: data.profile_job
-            })
-        })
-        .then(this._checkResponse)
     }
 
 //загрузка карточки с сервера
@@ -48,6 +38,29 @@ export default class Api {
         .then(this._checkResponse)
     }
 
+    
+    setUserInfo(data){
+        return fetch (`${this._url}/users/me`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+              name: data.profile_name,
+              about: data.profile_job
+            })
+        })
+        .then(this._checkResponse)
+    }
+
+    setUserAvatar(data){
+        return fetch (`${this._url}/users//me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+              avatar: data.avatar
+            })
+        })
+        .then(this._checkResponse)
+    }
 
     addCard(data) {
         return fetch(`${this._url}/cards`, {
@@ -55,7 +68,7 @@ export default class Api {
             headers: this._headers,
             body: JSON.stringify({
                 name: data.title,
-                link: data.image
+                link: data.image,
             })
         })
         .then(this._checkResponse)

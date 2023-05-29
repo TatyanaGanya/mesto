@@ -1,15 +1,16 @@
 export class Card {
-  constructor(dataCard, templateSelector, handleCardClick) {
-    this._card = card; 
-   console.log(dataCard)
-
+  constructor(dataCard, templateSelector, handleCardClick, deletePopupCard) {
+      this._card = dataCard; 
+      console.log(dataCard);
       this._link = dataCard.link;///!!!! image
-      this._name =dataCard.name;
+      this._name = dataCard.name;
       this._myId = dataCard.myid;
+
       this._ownerId = dataCard.owner._id;
       this._templateSelector = templateSelector;
       this._handleCardClick = handleCardClick;
       this._deletePopupCard = deletePopupCard;
+     
       this._cloneElement = this._getTemplateClone();
       this._imageElement = this._cloneElement.querySelector('.card__image');
       this._textElement = this._cloneElement.querySelector('.card__text');
@@ -52,18 +53,13 @@ export class Card {
         this._deletaElement.style.display = 'block'
      } else {
       this._deletaElement.style.display = 'none'
-     }
-     // this._myId === this._owerId ? this._deletaElement.style.display = 'block' : this._deletaElement.style.display = 'none'
+      }
+    //    this._myId === this._ownerId ? this._deletaElement.style.display = 'block' : this._deletaElement.style.display = 'none'
 
     }
 
   createCard() {
-    // this._cloneElement = this._getTemplateClone();
-    // this._imageElement = this._cloneElement.querySelector('.card__image');
-    // this._textElement = this._cloneElement.querySelector('.card__text');
-    // this._likeElement = this._cloneElement.querySelector('.card__like');
-    // this._deletaElement = this._cloneElement.querySelector('.card__delete');
-    this._imageElement.src = this._link;
+   this._imageElement.src = this._link;
     this._imageElement.alt = this._name;
     this._textElement.textContent = this._name;
     this._changeVisibleFOrIrashButton()

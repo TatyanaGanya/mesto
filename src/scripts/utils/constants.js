@@ -43,8 +43,9 @@ const listSelector = '.cards';
 const infoConfig= {
   profileNameSelector: '.profile__name',
   profileJobSelector: '.profile__about',
-  profileAvatarSelection: '.profile__avatar'
+  profileAvatarSelector: '.profile__avatar'
 }
+
 //const => index 
 const validationConfig = {
     formSelector: '.popup__content',// форма-
