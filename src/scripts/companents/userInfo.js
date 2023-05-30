@@ -4,7 +4,6 @@ export class UserInfo {
         this._profileJob = document.querySelector(infoConfig.profileJobSelector);
         this._profileAvatar = document.querySelector(
             infoConfig.profileAvatarSelector)
-        
     }
 //возвращаем обьект 
     getUserInfo() {
@@ -13,7 +12,7 @@ export class UserInfo {
             profile_job: this._profileJob.textContent
         }
     }
-
+    
 // добавляет на страницу
     setUserInfo({profile_name, profile_job, profile_avatar}) {
         this._profileName.textContent = profile_name;

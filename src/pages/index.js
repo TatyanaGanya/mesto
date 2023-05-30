@@ -10,8 +10,14 @@ import { popupOpenButtomAvatar, popupOpenButtomProfile, popupOpenButtomGalery, f
 import PopupCardDelete from '../scripts/companents/popupCardDelete.js';
 import Api from '../scripts/companents/api.js';
 
-
-
+// api
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-66',
+  headers: {
+    authorization: '69b59d5b-f26f-4db1-9d60-b5f1c83af874',
+    'Content-Type': 'application/json'
+  }
+}); 
 
 //экземпляры форм для валидности
 const formProfileElementValidator = new FormValidator(validationConfig, formProfileElement);
@@ -23,15 +29,6 @@ formAddElementValidator.enableValidation()
 const formAvataElementValidator = new FormValidator(validationConfig, formAvatarElement);
 formAvataElementValidator.enableValidation()
 
-
-// api pr9
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-66',
-  headers: {
-    authorization: '69b59d5b-f26f-4db1-9d60-b5f1c83af874',
-    'Content-Type': 'application/json'
-  }
-}); 
 
 //popup +
 const userInfo = new UserInfo(infoConfig)
@@ -49,13 +46,9 @@ const deletePopupCard= new PopupCardDelete(popupSelectorDelete, ({card, cardId})
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль
     })
-   
 });
 
-
-
 // SECTION (шаблон карточки создание карточки по класс)
-//function +
 function creatNewCard(element) {
   const card = new Card(element, templateSelector, popupImage.open, deletePopupCard.open, (likeElement, cardId) => {
     if(likeElement.classList.contains('card__like_active')){
@@ -84,7 +77,6 @@ const section = new Section((element) => {
     section.addItemAppend(creatNewCard(element))
 },listSelector)
 
-
 //profile обработка формы +
 const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
   api.setUserInfo(data)
@@ -103,7 +95,6 @@ const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
 
 })
 
-
 ///avatar 
 const popupAvatar = new PopupWithForm(popupSelectorAvatar, (data) => {
   api.setUserAvatar(data)
@@ -119,14 +110,11 @@ const popupAvatar = new PopupWithForm(popupSelectorAvatar, (data) => {
     console.log(err); // выведем ошибку в консоль
   })
   .finally(() => popupAvatar.setupDefaultText());
-
 })
-
-
 
 //newcard обработка формы+
 const popupAddCard = new PopupWithForm(popupSelectorGalery, (data) => {
-  Promise.all([api.getInfo(), api.addCard(data)])
+  Promise.all([api.getInitialInfo(), api.addCard(data)])
   .then(([dataUser, dataCard]) => {
     dataCard.myid = dataUser._id;
     section.addItemPrepend(creatNewCard(dataCard))
@@ -136,11 +124,7 @@ const popupAddCard = new PopupWithForm(popupSelectorGalery, (data) => {
     console.log(err); // выведем ошибку в консоль
   })
   .finally(() => popupAddCard.setupDefaultText());
- 
 });
-
-
-
 
 //открытие аватара
 popupOpenButtomAvatar.addEventListener('click', () => {
@@ -159,7 +143,6 @@ popupOpenButtomGalery.addEventListener('click', () => {
   popupAddCard.open()
 });
 
-
 //setEvenListners
 popupAddCard.setEvenListners();
 profilePopup.setEvenListners();
@@ -167,9 +150,8 @@ deletePopupCard.setEvenListners();
 popupImage.setEvenListners();
 popupAvatar.setEvenListners();
 
-
 //получить масив и получить данные
-Promise.all([api.getInfo(), api.getCards()])
+Promise.all([api.getInitialInfo(), api.getInitialCards()])
     .then(([dataUser, dataCard]) => {
       dataCard.forEach(element => element.myid = dataUser._id);
       userInfo.setUserInfo({

@@ -7,57 +7,33 @@ export default class Api {
         this._authorization = options.headers.authorization;
     }
 
-    _checkResponse(res){
+    _check(res){
         if (res.ok) {
           return res.json();
-        }
-        // если ошибка, отклоняем промис
+        } // если ошибка, отклоняем промис
         return Promise.reject(`Ошибка: ${res.status}`)
      }   
 
 //загрузка профиля с сервера
-    getInfo() {
+getInitialInfo() {
         return fetch(`${this._url}/users/me`, {
             headers: {
                 authorization: this._authorization
             }
         })
-       .then(this._checkResponse)
+       .then(this._check)
     }
 
 //загрузка карточки с сервера
-    getCards() {
+getInitialCards() {
         return fetch(`${this._url}/cards`, {
             headers: {
                 authorization: this._authorization
             }
         })
-        .then(this._checkResponse)
+        .then(this._check)
     }
-
     
-    setUserInfo(data){
-        return fetch (`${this._url}/users/me`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-              name: data.profile_name,
-              about: data.profile_job
-            })
-        })
-        .then(this._checkResponse)
-    }
-//avatar
-    setUserAvatar(data){
-        return fetch (`${this._url}/users//me/avatar`, {
-            method: 'PATCH',
-            headers: this._headers,
-            body: JSON.stringify({
-              avatar: data.avatar
-            })
-        })
-        .then(this._checkResponse)
-    }
 ///card
     addCard(data) {
         return fetch(`${this._url}/cards`, {
@@ -68,7 +44,32 @@ export default class Api {
                 link: data.image,
             })
         })
-        .then(this._checkResponse)
+        .then(this._check)
+    }
+
+// профиль
+    setUserInfo(data){
+        return fetch (`${this._url}/users/me`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+              name: data.profile_name,
+              about: data.profile_job
+            })
+        })
+        .then(this._check)
+    }
+
+//avatar
+    setUserAvatar(data){
+        return fetch (`${this._url}/users//me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+              avatar: data.avatar
+            })
+        })
+        .then(this._check)
     }
 
 ///like
@@ -79,7 +80,7 @@ export default class Api {
                 authorization: this._authorization
             }
          })
-        .then(this._checkResponse)
+        .then(this._check)
     }
 
     deleteLike(data) {
@@ -89,7 +90,7 @@ export default class Api {
                 authorization: this._authorization
             }
         })
-            .then(this._checkResponse)
+            .then(this._check)
     }
 
     deleteCard(data) {
@@ -99,7 +100,7 @@ export default class Api {
                 authorization: this._authorization
             }
         })
-            .then(this._checkResponse)
+            .then(this._check)
     } 
 }
 
