@@ -13,10 +13,7 @@ export default class Api {
         }
         // если ошибка, отклоняем промис
         return Promise.reject(`Ошибка: ${res.status}`)
-     }
-
-//код: return res.ok ? res>joson() : Promise.reject
-    
+     }   
 
 //загрузка профиля с сервера
     getInfo() {
@@ -50,7 +47,7 @@ export default class Api {
         })
         .then(this._checkResponse)
     }
-
+//avatar
     setUserAvatar(data){
         return fetch (`${this._url}/users//me/avatar`, {
             method: 'PATCH',
@@ -61,7 +58,7 @@ export default class Api {
         })
         .then(this._checkResponse)
     }
-
+///card
     addCard(data) {
         return fetch(`${this._url}/cards`, {
             method: 'POST',
@@ -74,5 +71,35 @@ export default class Api {
         .then(this._checkResponse)
     }
 
+///like
+    addLike(data) {
+        return fetch(`${this._url}/cards/${data}/likes`, {
+            method: 'PUT',
+            headers: {
+                authorization: this._authorization
+            }
+         })
+        .then(this._checkResponse)
+    }
+
+    deleteLike(data) {
+        return fetch(`${this._url}/cards/${data}/likes`, {
+            method: 'DELETE',
+            headers: {
+                authorization: this._authorization
+            }
+        })
+            .then(this._checkResponse)
+    }
+
+    deleteCard(data) {
+        return fetch(`${this._url}/cards/${data}`, {
+            method: 'DELETE',
+            headers: {
+                authorization: this._authorization
+            }
+        })
+            .then(this._checkResponse)
+    } 
 }
 

@@ -5,15 +5,12 @@ import PopupWithImage from "../scripts/companents/popupWithImage.js";
 import Section from "../scripts/companents/section.js";
 import { UserInfo } from "../scripts/companents/userInfo.js";
 import  PopupWithForm  from "../scripts/companents/popupWithForm.js";
-import { initialCards, popupOpenButtomProfile, popupOpenButtomGalery, formProfileElement, formAddElement, popupSelectorProfile, popupSelectorGalery,popupSelectorImage,templateSelector,listSelector,infoConfig,validationConfig } from "../scripts/utils/constants.js"
+import { popupOpenButtomAvatar, popupOpenButtomProfile, popupOpenButtomGalery, formAvatarElement, formProfileElement, formAddElement,popupSelectorAvatar, popupSelectorProfile,popupSelectorDelete, popupSelectorGalery,popupSelectorImage,templateSelector,listSelector,infoConfig,validationConfig
+} from "../scripts/utils/constants.js"
 import PopupCardDelete from '../scripts/companents/popupCardDelete.js';
 import Api from '../scripts/companents/api.js';
 
-// constant
-const formAvatarElement = document.forms.profile_avatar;
-const popupSelectorAvatar = '.popup_avatar';
-const popupSelectorDelete = '.popup_delete';
-const popupOpenButtomAvatar = document.querySelector(".profile__change");
+
 
 
 //экземпляры форм для валидности
@@ -35,9 +32,6 @@ const api = new Api({
     'Content-Type': 'application/json'
   }
 }); 
-//console.log(api)
-api.getCards()
-.then(res => console.log(res))
 
 //popup +
 const userInfo = new UserInfo(infoConfig)
@@ -45,29 +39,50 @@ const userInfo = new UserInfo(infoConfig)
 //image +
 const popupImage = new PopupWithImage(popupSelectorImage);
 
-
 //delete
-const deletePopupCard= new PopupCardDelete(popupSelectorDelete, (element) => {
-  element.removeCard();
-  deletePopupCard.close();
+const deletePopupCard= new PopupCardDelete(popupSelectorDelete, ({card, cardId}) => {
+  api.deleteCard(cardId)
+    .then(() =>{
+      card.removeCard()
+      deletePopupCard.close();
+    })
+    .catch((err) => {
+      console.log(err); // выведем ошибку в консоль
+    })
+   
 });
 
-console.log(deletePopupCard)
+
 
 // SECTION (шаблон карточки создание карточки по класс)
 //function +
 function creatNewCard(element) {
-  const card = new Card(element, templateSelector, popupImage.open, deletePopupCard.open);
+  const card = new Card(element, templateSelector, popupImage.open, deletePopupCard.open, (likeElement, cardId) => {
+    if(likeElement.classList.contains('card__like_active')){
+      api.deleteLike(cardId)
+      .then(res => {
+        card.toggleLike(res.likes)
+      })
+      .catch((err) => {
+        console.log(err); // выведем ошибку в консоль
+      })
+
+    } else {
+      api.addLike(cardId) 
+        .then (res => {
+          card.toggleLike(res.likes)
+        })
+        .catch((err) => {
+          console.log(err); // выведем ошибку в консоль
+        })
+    }
+  });
   return card.createCard();
 }
 
 const section = new Section((element) => {
     section.addItemAppend(creatNewCard(element))
 },listSelector)
-
-//создание карточек из масива
-//section.addCardFromArray(initialCards)
-
 
 
 //profile обработка формы +
@@ -79,12 +94,13 @@ const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
       profile_job: res.about, 
       profile_avatar: res.avatar
      })
+     profilePopup.close();
   })
   .catch((err) => {
     console.log(err); // выведем ошибку в консоль
   })
-  .finally();
-  profilePopup.close();
+  .finally(() => profilePopup.setupDefaultText())
+
 })
 
 
@@ -102,11 +118,10 @@ const popupAvatar = new PopupWithForm(popupSelectorAvatar, (data) => {
   .catch((err) => {
     console.log(err); // выведем ошибку в консоль
   })
-  .finally();
+  .finally(() => popupAvatar.setupDefaultText());
 
 })
 
-console.log(popupAvatar)
 
 
 //newcard обработка формы+
@@ -120,8 +135,8 @@ const popupAddCard = new PopupWithForm(popupSelectorGalery, (data) => {
   .catch((err) => {
     console.log(err); // выведем ошибку в консоль
   })
-  .finally();
-  profilePopup.close();
+  .finally(() => popupAddCard.setupDefaultText());
+ 
 });
 
 
@@ -153,15 +168,10 @@ popupImage.setEvenListners();
 popupAvatar.setEvenListners();
 
 
-// formAvataElementValidator.resetErrorOpenForm()
-
-
 //получить масив и получить данные
 Promise.all([api.getInfo(), api.getCards()])
     .then(([dataUser, dataCard]) => {
       dataCard.forEach(element => element.myid = dataUser._id);
-      console.log(dataCard)
-      console.log(dataUser)
       userInfo.setUserInfo({
         profile_name: dataUser.name, 
         profile_job: dataUser.about, 

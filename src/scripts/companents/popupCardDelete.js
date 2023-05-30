@@ -3,6 +3,7 @@ import { Popup } from "./popup.js";
 export default class PopupCardDelete extends Popup {
     constructor(popupSelector, submitFunction) {
         super(popupSelector);
+        this._form = this._popup.querySelector('.popup__content');
         this._submitFunction = submitFunction;
     }
 
@@ -10,12 +11,13 @@ export default class PopupCardDelete extends Popup {
         super.setEvenListners();
         this._form.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._submitFunction(this._element);
+            this._submitFunction({card: this._element,  cardId: this._cardId});
         })
     }
 
-    open = (element) => {
+    open = ({card, cardId}) => {
         super.open();
-        this._element = element;
+        this._element = card;
+        this._cardId = cardId;
     }
 }

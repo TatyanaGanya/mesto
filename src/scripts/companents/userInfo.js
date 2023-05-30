@@ -11,7 +11,6 @@ export class UserInfo {
         return {
             profile_name: this._profileName.textContent, 
             profile_job: this._profileJob.textContent
-            
         }
     }
 
