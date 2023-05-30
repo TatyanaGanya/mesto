@@ -92,7 +92,6 @@ const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
     console.log(err); // выведем ошибку в консоль
   })
   .finally(() => profilePopup.setupDefaultText())
-
 })
 
 ///avatar 

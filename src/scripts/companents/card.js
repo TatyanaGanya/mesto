@@ -8,7 +8,6 @@ export class Card {
       this._templateSelector = templateSelector;
       this._handleCardClick = handleCardClick;
       this._deletePopupCard = deletePopupCard;
-
       this._likes = dataCard.likes;
       this._lengthLike = dataCard.likes.length;
       this._cardId = dataCard._id;
@@ -24,7 +23,8 @@ export class Card {
   _getTemplateClone() {
       return document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true)
   }
-  //delete card
+
+  //удаление карточки
   _deleteCard = () => {
     this._deletePopupCard({card: this, cardId: this._cardId})
   }
@@ -32,7 +32,6 @@ export class Card {
   _handeleOpenZoomImage = () => {
     this._handleCardClick(this._card)
   }
-
 
   //удаление и добавление мусорки
   _changeVisibleFOrIrashButton() {
@@ -43,14 +42,12 @@ export class Card {
     }
   }
 
-
-// //like
+// like
     _putCardLike = () => {
      this._changeLike(this._likeElement, this._cardId);
-      //this._likeElement.classList.toggle('card__like_active');
     }
 
-    //проверить свой лайк
+ //проверить свой лайк
   _checklike() {
     this._likes.forEach(element => {
       if(element._id === this._myId){
@@ -81,9 +78,9 @@ export class Card {
     this._imageElement.src = this._link;
     this._imageElement.alt = this._name;
     this._textElement.textContent = this._name;
-    this._checklike();
     this._changeVisibleFOrIrashButton();
     this._setEventListener();
+    this._checklike();
     return this._cloneElement;
   }
 

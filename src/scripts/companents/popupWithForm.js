@@ -8,10 +8,8 @@ export default class PopupWithForm extends Popup {
         this._inputList = this._form.querySelectorAll('.popup__input')
         this._submitButton = this._form.querySelector('.popup__save');
         this._loadingButtonText = this._submitButton.textContent;
-
-
     }
-//
+
     _getIputValue(){
         this._values = {};
         this._inputList.forEach(input => {
@@ -43,5 +41,4 @@ export default class PopupWithForm extends Popup {
         super.close();
         this._form.reset();
     }
-
 }

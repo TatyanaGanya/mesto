@@ -5,6 +5,7 @@ export class UserInfo {
         this._profileAvatar = document.querySelector(
             infoConfig.profileAvatarSelector)
     }
+    
 //возвращаем обьект 
     getUserInfo() {
         return {

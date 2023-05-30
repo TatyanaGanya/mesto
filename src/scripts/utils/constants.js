@@ -1,6 +1,4 @@
-
 //кнопки
-
 const popupOpenButtomAvatar = document.querySelector(".profile__change");
 const popupOpenButtomProfile = document.querySelector(".profile__edit");
 const popupOpenButtomGalery = document.querySelector(".profile__add");

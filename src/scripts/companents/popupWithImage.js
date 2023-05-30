@@ -5,7 +5,6 @@ export default class PopupWithImage extends Popup {
         super(popupSelector);
         this._popupImage = this._popup.querySelector('.popup__image')
         this._popupDescription = this._popup.querySelector('.popup__description')
-
     }
 
     open = (card) => {
@@ -14,5 +13,4 @@ export default class PopupWithImage extends Popup {
         this._popupDescription.textContent= card.name;
         super.open()
     }
-
 }
