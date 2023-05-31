@@ -1,14 +1,14 @@
 import './index.css'
-import { Card } from "../scripts/companents/card.js"
-import { FormValidator } from "../scripts/companents/formValidator.js"
-import PopupWithImage from "../scripts/companents/popupWithImage.js";
-import Section from "../scripts/companents/section.js";
-import { UserInfo } from "../scripts/companents/userInfo.js";
-import  PopupWithForm  from "../scripts/companents/popupWithForm.js";
+import { Card } from "../scripts/companents/Card.js"
+import { FormValidator } from "../scripts/companents/FormValidator.js"
+import PopupWithImage from "../scripts/companents/PopupWithImage.js";
+import Section from "../scripts/companents/Section.js";
+import { UserInfo } from "../scripts/companents/UserInfo.js";
+import  PopupWithForm  from "../scripts/companents/PopupWithForm.js";
 import { popupOpenButtomAvatar, popupOpenButtomProfile, popupOpenButtomGalery, formAvatarElement, formProfileElement, formAddElement,popupSelectorAvatar, popupSelectorProfile,popupSelectorDelete, popupSelectorGalery,popupSelectorImage,templateSelector,listSelector,infoConfig,validationConfig
 } from "../scripts/utils/constants.js"
-import PopupCardDelete from '../scripts/companents/popupCardDelete.js';
-import Api from '../scripts/companents/api.js';
+import PopupCardDelete from '../scripts/companents/PopupCardDelete.js';
+import Api from '../scripts/companents/Api.js';
 
 // api
 const api = new Api({
