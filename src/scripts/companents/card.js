@@ -31,7 +31,7 @@ export class Card {
 
  //zoom 
   _handeleOpenZoomImage = () => {
-    this._handleCardClick(this._card, isLiked)
+    this._handleCardClick(this._card)
   }
 
   //удаление и добавление мусорки
@@ -64,7 +64,7 @@ export class Card {
   }
 
   toggleLike(likes) {
-    this._likes = likes
+    this._likes = likes;
     this._likeElement.classList.toggle('card__like_active');
     this._counter.textContent = likes.length
   }
@@ -89,5 +89,5 @@ export class Card {
     this._checklike();
     return this._cloneElement;
   }
-  
+
 }
