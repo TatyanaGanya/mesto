@@ -4,7 +4,7 @@ const popupOpenButtomProfile = document.querySelector(".profile__edit");
 const popupOpenButtomGalery = document.querySelector(".profile__add");
 
 //формы, валидация
-const formAvatarElement = document.forms.profile_avatar;
+const formAvatarElement = document.forms.profileAvatar;
 const formProfileElement = document.forms.profile_form;
 const formAddElement = document.forms.profile_title;
 
@@ -17,7 +17,7 @@ const popupSelectorImage = '.popup_zoom-image';
 const templateSelector ='.template';
 const listSelector = '.cards';
 //профиль
-const infoConfig= {
+const infoConfig = {
   profileNameSelector: '.profile__name',
   profileJobSelector: '.profile__about',
   profileAvatarSelector: '.profile__avatar'

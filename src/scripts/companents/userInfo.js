@@ -4,20 +4,26 @@ export class UserInfo {
         this._profileJob = document.querySelector(infoConfig.profileJobSelector);
         this._profileAvatar = document.querySelector(
             infoConfig.profileAvatarSelector)
+
     }
     
 //возвращаем обьект 
     getUserInfo() {
         return {
-            profile_name: this._profileName.textContent, 
-            profile_job: this._profileJob.textContent
+            profileName: this._profileName.textContent, 
+            profileJob: this._profileJob.textContent
         }
+    }
+
+    getUserInfoId() {
+        return this._id;
     }
     
 // добавляет на страницу
-    setUserInfo({profile_name, profile_job, profile_avatar}) {
-        this._profileName.textContent = profile_name;
-        this._profileJob.textContent = profile_job;
-        this._profileAvatar.src = profile_avatar;
+    setUserInfo({profileName, profileJob, profileAvatar, userId}) {
+        this._profileName.textContent = profileName;
+        this._profileJob.textContent = profileJob;
+        this._profileAvatar.src = profileAvatar;
+        this._id = userId; //id
     }
 }

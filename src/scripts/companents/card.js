@@ -28,9 +28,10 @@ export class Card {
   _deleteCard = () => {
     this._deletePopupCard({card: this, cardId: this._cardId})
   }
+
  //zoom 
   _handeleOpenZoomImage = () => {
-    this._handleCardClick(this._card)
+    this._handleCardClick(this._card, isLiked)
   }
 
   //удаление и добавление мусорки
@@ -43,9 +44,13 @@ export class Card {
   }
 
 // like
-    _putCardLike = () => {
-     this._changeLike(this._likeElement, this._cardId);
-    }
+   _putCardLike = () => {
+     this._changeLike(this._cardId);
+  }
+
+  checkMyLikes() {
+    return this._likes.some(user => user._id === this._myId)  
+  }
 
  //проверить свой лайк
   _checklike() {
@@ -59,6 +64,7 @@ export class Card {
   }
 
   toggleLike(likes) {
+    this._likes = likes
     this._likeElement.classList.toggle('card__like_active');
     this._counter.textContent = likes.length
   }
@@ -83,5 +89,5 @@ export class Card {
     this._checklike();
     return this._cloneElement;
   }
-
+  
 }

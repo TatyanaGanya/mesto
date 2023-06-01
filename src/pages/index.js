@@ -49,29 +49,36 @@ const deletePopupCard= new PopupCardDelete(popupSelectorDelete, ({card, cardId})
 });
 
 // SECTION (шаблон карточки создание карточки по класс)
-function creatNewCard(element) {
-  const card = new Card(element, templateSelector, popupImage.open, deletePopupCard.open, (likeElement, cardId) => {
-    if(likeElement.classList.contains('card__like_active')){
-      api.deleteLike(cardId)
-      .then(res => {
-        card.toggleLike(res.likes)
-      })
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      })
-
-    } else {
-      api.addLike(cardId) 
-        .then (res => {
-          card.toggleLike(res.likes)
-        })
-        .catch((err) => {
-          console.log(err); // выведем ошибку в консоль
-        })
-    }
-  });
-  return card.createCard();
+function creatNewCard(element) { 
+  const card = new Card(
+    element,
+    templateSelector, 
+    popupImage.open,  
+    deletePopupCard.open, 
+    (cardId) => { 
+    const isLiked = card.checkMyLikes();
+    if(isLiked){ 
+      api.deleteLike(cardId) 
+      .then(res => { 
+        card.toggleLike(res.likes) 
+      }) 
+      .catch((err) => { 
+        console.log(err);
+      }) 
+    } else { 
+      api.addLike(cardId)  
+        .then (res => { 
+          card.toggleLike(res.likes) 
+        }) 
+        .catch((err) => { 
+          console.log(err); // выведем ошибку в консоль 
+        }) 
+    } 
+  }
+  ); 
+  return card.createCard(); 
 }
+
 
 const section = new Section((element) => {
     section.addItemAppend(creatNewCard(element))
@@ -82,9 +89,10 @@ const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
   api.setUserInfo(data)
   .then(res => {
     userInfo.setUserInfo({
-      profile_name: res.name, 
-      profile_job: res.about, 
-      profile_avatar: res.avatar
+      profileName: res.name, 
+      profileJob: res.about, 
+      profileAvatar: res.avatar,
+     // userId: res._id
      })
      profilePopup.close();
   })
@@ -99,9 +107,10 @@ const popupAvatar = new PopupWithForm(popupSelectorAvatar, (data) => {
   api.setUserAvatar(data)
   .then(res => {
     userInfo.setUserInfo({
-      profile_name: res.name, 
-      profile_job: res.about, 
-      profile_avatar: res.avatar
+      profileName: res.name, 
+      profileJob: res.about, 
+      profileAvatar: res.avatar,
+     // userId: res._id
      })
      popupAvatar.close();
   })
@@ -111,12 +120,12 @@ const popupAvatar = new PopupWithForm(popupSelectorAvatar, (data) => {
   .finally(() => popupAvatar.setupDefaultText());
 })
 
-//newcard обработка формы+
+//newcard обработка формы
 const popupAddCard = new PopupWithForm(popupSelectorGalery, (data) => {
-  Promise.all([api.getInitialInfo(), api.addCard(data)])
-  .then(([dataUser, dataCard]) => {
-    dataCard.myid = dataUser._id;
-    section.addItemPrepend(creatNewCard(dataCard))
+  api.addCard(data)
+  .then(dataCard => {
+    dataCard.myid = userInfo.getUserInfoId(); 
+    section.addItemPrepend(creatNewCard(dataCard));
     popupAddCard.close()
   })
   .catch((err) => {
@@ -154,10 +163,11 @@ Promise.all([api.getInitialInfo(), api.getInitialCards()])
     .then(([dataUser, dataCard]) => {
       dataCard.forEach(element => element.myid = dataUser._id);
       userInfo.setUserInfo({
-        profile_name: dataUser.name, 
-        profile_job: dataUser.about, 
-        profile_avatar: dataUser.avatar}
-        )
+        profileName: dataUser.name, 
+        profileJob: dataUser.about, 
+        profileAvatar: dataUser.avatar,
+        userId: dataUser._id // id
+      })
       section.addCardFromArray(dataCard); //массив card
     
     })

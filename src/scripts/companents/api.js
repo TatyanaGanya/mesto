@@ -53,8 +53,8 @@ getInitialCards() {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-              name: data.profile_name,
-              about: data.profile_job
+              name: data.profileName,
+              about: data.profileJob
             })
         })
         .then(this._check)
