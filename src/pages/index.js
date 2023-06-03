@@ -89,10 +89,10 @@ const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
   api.setUserInfo(data)
   .then(res => {
     userInfo.setUserInfo({
-      profileName: res.name, 
-      profileJob: res.about, 
-      profileAvatar: res.avatar,
-     // userId: res._id
+      name: res.name, 
+      about: res.about, 
+      avatar: res.avatar,
+      userId: res._id
      })
      profilePopup.close();
   })
@@ -107,10 +107,10 @@ const popupAvatar = new PopupWithForm(popupSelectorAvatar, (data) => {
   api.setUserAvatar(data)
   .then(res => {
     userInfo.setUserInfo({
-      profileName: res.name, 
-      profileJob: res.about, 
-      profileAvatar: res.avatar,
-     // userId: res._id
+      name: res.name, 
+      about: res.about, 
+      avatar: res.avatar,
+      userId: res._id
      })
      popupAvatar.close();
   })

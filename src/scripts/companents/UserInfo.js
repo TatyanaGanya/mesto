@@ -10,8 +10,8 @@ export class UserInfo {
 //возвращаем обьект 
     getUserInfo() {
         return {
-            name: this._profileName.textContent, 
-            about: this._profileJob.textContent
+            profileName: this._profileName.textContent, 
+            profileJob: this._profileJob.textContent
         }
     }
 
