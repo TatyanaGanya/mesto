@@ -92,7 +92,7 @@ const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
       profileName: res.name, 
       profileJob: res.about, 
       profileAvatar: res.avatar,
-     // userId: res._id
+      userId: res._id
      })
      profilePopup.close();
   })
@@ -110,7 +110,7 @@ const popupAvatar = new PopupWithForm(popupSelectorAvatar, (data) => {
       profileName: res.name, 
       profileJob: res.about, 
       profileAvatar: res.avatar,
-     // userId: res._id
+      userId: res._id
      })
      popupAvatar.close();
   })
