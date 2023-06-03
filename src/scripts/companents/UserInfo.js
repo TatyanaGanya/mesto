@@ -20,10 +20,10 @@ export class UserInfo {
     }
     
 // добавляет на страницу
-    setUserInfosetUserInfo( { name, about, avatar, _id } ) {
-        this._profileName.textContent = name;
-        this._profileJob.textContent = about;
-        this._profileAvatar.src = avatar;
-        this._id = _id; //id
+    setUserInfo( { name, about, avatar,userId } ) {
+        this._profileName.textContent = name; 
+        this._profileJob.textContent = about; 
+        this._profileAvatar.src = avatar; 
+        this._id = userId; //id 
     }
 }

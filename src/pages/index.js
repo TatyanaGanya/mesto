@@ -92,7 +92,7 @@ const profilePopup = new PopupWithForm(popupSelectorProfile, (data) => {
       profileName: res.name, 
       profileJob: res.about, 
       profileAvatar: res.avatar,
-      userId: res._id
+     // userId: res._id
      })
      profilePopup.close();
   })
@@ -110,7 +110,7 @@ const popupAvatar = new PopupWithForm(popupSelectorAvatar, (data) => {
       profileName: res.name, 
       profileJob: res.about, 
       profileAvatar: res.avatar,
-      userId: res._id
+     // userId: res._id
      })
      popupAvatar.close();
   })
@@ -166,7 +166,7 @@ Promise.all([api.getInitialInfo(), api.getInitialCards()])
         name: dataUser.name, 
         about: dataUser.about, 
         avatar: dataUser.avatar,
-        _id: dataUser._id // id
+        userId: dataUser._id // id profileJob, profileJob, profileAvatar,userId
       })
       section.addCardFromArray(dataCard); //массив card
     
