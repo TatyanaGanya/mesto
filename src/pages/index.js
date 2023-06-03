@@ -163,10 +163,10 @@ Promise.all([api.getInitialInfo(), api.getInitialCards()])
     .then(([dataUser, dataCard]) => {
       dataCard.forEach(element => element.myid = dataUser._id);
       userInfo.setUserInfo({
-        profileName: dataUser.name, 
-        profileJob: dataUser.about, 
-        profileAvatar: dataUser.avatar,
-        userId: dataUser._id // id
+        name: dataUser.name, 
+        about: dataUser.about, 
+        avatar: dataUser.avatar,
+        _id: dataUser._id // id
       })
       section.addCardFromArray(dataCard); //массив card
     

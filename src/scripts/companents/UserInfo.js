@@ -10,8 +10,8 @@ export class UserInfo {
 //возвращаем обьект 
     getUserInfo() {
         return {
-            profileName: this._profileName.textContent, 
-            profileJob: this._profileJob.textContent
+            name: this._profileName.textContent, 
+            about: this._profileJob.textContent
         }
     }
 
@@ -20,10 +20,10 @@ export class UserInfo {
     }
     
 // добавляет на страницу
-    setUserInfo({profileName, profileJob, profileAvatar, userId}) {
-        this._profileName.textContent = profileName;
-        this._profileJob.textContent = profileJob;
-        this._profileAvatar.src = profileAvatar;
-        this._id = userId; //id
+    setUserInfosetUserInfo( { name, about, avatar, _id } ) {
+        this._profileName.textContent = name;
+        this._profileJob.textContent = about;
+        this._profileAvatar.src = avatar;
+        this._id = _id; //id
     }
 }
